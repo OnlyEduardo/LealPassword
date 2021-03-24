@@ -1,6 +1,6 @@
 # LealPassword
 
-> Gerenciador de senhas para facilitar a vida
+> Gerenciador de senhas para facilitar a vida.
 > Programa feito em C#.
 
 
