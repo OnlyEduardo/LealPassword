@@ -32,6 +32,8 @@
             this.labelOpenLast = new System.Windows.Forms.Label();
             this.buttonChooseFileToOpen = new System.Windows.Forms.Button();
             this.buttonCreateNewDataBase = new System.Windows.Forms.Button();
+            this.buttonCredits = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelTitle
@@ -66,7 +68,7 @@
             this.buttonChooseFileToOpen.BackColor = System.Drawing.Color.Gray;
             this.buttonChooseFileToOpen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonChooseFileToOpen.ForeColor = System.Drawing.Color.White;
-            this.buttonChooseFileToOpen.Location = new System.Drawing.Point(125, 196);
+            this.buttonChooseFileToOpen.Location = new System.Drawing.Point(125, 210);
             this.buttonChooseFileToOpen.Name = "buttonChooseFileToOpen";
             this.buttonChooseFileToOpen.Size = new System.Drawing.Size(200, 60);
             this.buttonChooseFileToOpen.TabIndex = 2;
@@ -78,12 +80,32 @@
             this.buttonCreateNewDataBase.BackColor = System.Drawing.Color.Gray;
             this.buttonCreateNewDataBase.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCreateNewDataBase.ForeColor = System.Drawing.Color.White;
-            this.buttonCreateNewDataBase.Location = new System.Drawing.Point(125, 275);
+            this.buttonCreateNewDataBase.Location = new System.Drawing.Point(125, 297);
             this.buttonCreateNewDataBase.Name = "buttonCreateNewDataBase";
             this.buttonCreateNewDataBase.Size = new System.Drawing.Size(200, 60);
             this.buttonCreateNewDataBase.TabIndex = 3;
             this.buttonCreateNewDataBase.Text = "Criar novo";
             this.buttonCreateNewDataBase.UseVisualStyleBackColor = false;
+            // 
+            // buttonCredits
+            // 
+            this.buttonCredits.BackColor = System.Drawing.Color.Gray;
+            this.buttonCredits.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCredits.ForeColor = System.Drawing.Color.White;
+            this.buttonCredits.Location = new System.Drawing.Point(163, 404);
+            this.buttonCredits.Name = "buttonCredits";
+            this.buttonCredits.Size = new System.Drawing.Size(125, 37);
+            this.buttonCredits.TabIndex = 4;
+            this.buttonCredits.Text = "Créditos";
+            this.buttonCredits.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(386, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 64);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "label1";
             // 
             // OCDataBaseView
             // 
@@ -91,8 +113,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(450, 600);
+            this.ClientSize = new System.Drawing.Size(450, 500);
             this.ControlBox = false;
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.buttonCredits);
             this.Controls.Add(this.buttonCreateNewDataBase);
             this.Controls.Add(this.buttonChooseFileToOpen);
             this.Controls.Add(this.labelOpenLast);
@@ -103,7 +127,6 @@
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(450, 600);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(450, 600);
             this.Name = "OCDataBaseView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.OCDataBaseView_Load);
@@ -118,5 +141,7 @@
         private System.Windows.Forms.Label labelOpenLast;
         private System.Windows.Forms.Button buttonChooseFileToOpen;
         private System.Windows.Forms.Button buttonCreateNewDataBase;
+        private System.Windows.Forms.Button buttonCredits;
+        private System.Windows.Forms.Label label1;
     }
 }
