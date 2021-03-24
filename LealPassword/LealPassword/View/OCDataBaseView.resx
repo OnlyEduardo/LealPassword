@@ -117,20 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="icon_key" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_key.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MyEmail" xml:space="preserve">
-    <value>eduardoleal.contact@gmail.com</value>
-  </data>
-  <data name="MyFirstName" xml:space="preserve">
-    <value>Eduardo</value>
-  </data>
-  <data name="MyFullName" xml:space="preserve">
-    <value>Eduardo Ribeiro Leal</value>
-  </data>
-  <data name="MySite" xml:space="preserve">
-    <value>https://www.eduardo-ribeiro-leal.com</value>
-  </data>
 </root>
