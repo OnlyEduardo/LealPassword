@@ -3,6 +3,9 @@
     [System.Serializable]
     internal sealed class PersonalInfo
     {
+        internal PersonalInfo() 
+            : this("Nome completo", "999999999", "email.email@email.com", "999999999", "99999999999") { }
+             
         internal PersonalInfo(string name, string cellphone, string email, string rg, string cpf)
         {
             Name = name;

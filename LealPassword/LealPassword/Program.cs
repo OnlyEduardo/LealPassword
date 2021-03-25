@@ -26,6 +26,22 @@ namespace LealPassword
             Application.Run(new OCDataBaseView());
         }
 
+        internal static void SwitchForms(Form origin, Form target)
+        {
+            origin.Hide();
+            origin.Enabled = false;
+            origin.ShowInTaskbar = false;
+            origin.ShowIcon = false;
+
+            target.Closed += (s, args) => origin.Close();
+            target.ShowInTaskbar = true;
+            target.Enabled = true;
+            target.ShowIcon = true;
+            target.Visible = true;
+            target.Show();
+        }
+
+        #region Form methods
         internal static void DragAndDrop(MouseEventArgs e, IntPtr handle)
         {
             if (e.Button == MouseButtons.Left)
@@ -34,7 +50,19 @@ namespace LealPassword
                 SendMessage(handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
-        
+
+        internal static void ShowCredits()
+        {
+            var version = Properties.Settings.Default.Version;
+            var credits = $"LealPassword - Gerenciador de senhas\n\n" +
+                $"Versão {version}\n" +
+                $"Copyright © 2021\n" +
+                $"By: {Properties.Resources.MyFullName}\n" +
+                $"Site: {Properties.Resources.MySite}.";
+
+            MessageBox.Show(credits, "Créditos", MessageBoxButtons.OK);
+        }
+
         internal static void SetDefaultConf(Form form, string title)
         {
             form.Icon = Properties.Resources.icon_key;
@@ -43,7 +71,8 @@ namespace LealPassword
         internal static void SetDefaultConf(Form form) => SetDefaultConf(form, "LealPassword");
 
         internal static void RestartProgram() => Application.Restart();
-        internal static void QuitProgram() => Application.Restart();
+        internal static void QuitProgram() => Application.Exit();
+        #endregion
 
         internal static void OpenSite(string url)
         {
@@ -65,5 +94,13 @@ namespace LealPassword
             }
         }
         internal static void CopyToClipBoard(string text) => Clipboard.SetText(text);
+
+        #region OpenDataBases
+        internal static void OpenDataBase(OCDataBaseView oCDataBaseView, string pathToDatabase)
+        {
+            var dataBase = Data.ReadController.ReadDataBase(pathToDatabase);
+            SwitchForms(oCDataBaseView, new MainForm(dataBase));
+        }
+        #endregion
     }
 }

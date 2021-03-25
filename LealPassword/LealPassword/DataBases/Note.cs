@@ -9,8 +9,8 @@
             Text = text;
         }
 
-        internal string Name { get; }
-        internal string Text { get; }
+        internal string Name { get; set; }
+        internal string Text { get; set; }
 
         public override string ToString() => Name;
     }

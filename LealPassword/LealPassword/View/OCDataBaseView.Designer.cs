@@ -34,6 +34,16 @@
             this.buttonCreateNewDataBase = new System.Windows.Forms.Button();
             this.buttonCredits = new System.Windows.Forms.Button();
             this.labelClose = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.textBoxMasterPass = new System.Windows.Forms.TextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.labelError = new System.Windows.Forms.Label();
+            this.buttonCreateNew = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
             // 
             // labelTitle
@@ -57,7 +67,7 @@
             this.labelOpenLast.ForeColor = System.Drawing.Color.Blue;
             this.labelOpenLast.Location = new System.Drawing.Point(0, 110);
             this.labelOpenLast.Name = "labelOpenLast";
-            this.labelOpenLast.Size = new System.Drawing.Size(467, 32);
+            this.labelOpenLast.Size = new System.Drawing.Size(467, 61);
             this.labelOpenLast.TabIndex = 1;
             this.labelOpenLast.Text = "Abrir último: nome_database";
             this.labelOpenLast.Visible = false;
@@ -103,16 +113,102 @@
             this.buttonCredits.TabIndex = 4;
             this.buttonCredits.Text = "Créditos";
             this.buttonCredits.UseVisualStyleBackColor = false;
-            this.buttonCredits.Click += new System.EventHandler(this.buttonCredits_Click);
+            this.buttonCredits.Click += new System.EventHandler(this.ButtonCredits_Click);
             // 
             // labelClose
             // 
+            this.labelClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelClose.Image = global::LealPassword.Properties.Resources.close_window_32px;
-            this.labelClose.Location = new System.Drawing.Point(403, 0);
+            this.labelClose.Location = new System.Drawing.Point(435, 0);
             this.labelClose.Name = "labelClose";
-            this.labelClose.Size = new System.Drawing.Size(64, 64);
+            this.labelClose.Size = new System.Drawing.Size(32, 32);
             this.labelClose.TabIndex = 5;
             this.labelClose.Click += new System.EventHandler(this.LabelClose_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(478, 210);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(207, 17);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Nome do novo bando de dados";
+            // 
+            // textBoxName
+            // 
+            this.textBoxName.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxName.Location = new System.Drawing.Point(481, 230);
+            this.textBoxName.MaxLength = 30;
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(242, 30);
+            this.textBoxName.TabIndex = 7;
+            // 
+            // textBoxMasterPass
+            // 
+            this.textBoxMasterPass.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxMasterPass.Location = new System.Drawing.Point(481, 297);
+            this.textBoxMasterPass.MaxLength = 50;
+            this.textBoxMasterPass.Name = "textBoxMasterPass";
+            this.textBoxMasterPass.PasswordChar = '*';
+            this.textBoxMasterPass.Size = new System.Drawing.Size(218, 30);
+            this.textBoxMasterPass.TabIndex = 8;
+            this.textBoxMasterPass.TextChanged += new System.EventHandler(this.TextBoxMasterPass_Tiping);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.Location = new System.Drawing.Point(705, 297);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(18, 30);
+            this.checkBox1.TabIndex = 9;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(478, 277);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(96, 17);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Senha mestra";
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(481, 334);
+            this.progressBar1.Maximum = 5;
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(218, 10);
+            this.progressBar1.TabIndex = 11;
+            // 
+            // labelError
+            // 
+            this.labelError.AutoSize = true;
+            this.labelError.ForeColor = System.Drawing.Color.Red;
+            this.labelError.Location = new System.Drawing.Point(478, 347);
+            this.labelError.Name = "labelError";
+            this.labelError.Size = new System.Drawing.Size(0, 17);
+            this.labelError.TabIndex = 12;
+            this.labelError.Visible = false;
+            // 
+            // buttonCreateNew
+            // 
+            this.buttonCreateNew.BackColor = System.Drawing.Color.Gray;
+            this.buttonCreateNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCreateNew.ForeColor = System.Drawing.Color.White;
+            this.buttonCreateNew.Location = new System.Drawing.Point(528, 404);
+            this.buttonCreateNew.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonCreateNew.Name = "buttonCreateNew";
+            this.buttonCreateNew.Size = new System.Drawing.Size(133, 37);
+            this.buttonCreateNew.TabIndex = 13;
+            this.buttonCreateNew.Text = "Criar";
+            this.buttonCreateNew.UseVisualStyleBackColor = false;
+            this.buttonCreateNew.Click += new System.EventHandler(this.ButtonCreateNew_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // OCDataBaseView
             // 
@@ -122,6 +218,14 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(467, 492);
             this.ControlBox = false;
+            this.Controls.Add(this.buttonCreateNew);
+            this.Controls.Add(this.labelError);
+            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.textBoxMasterPass);
+            this.Controls.Add(this.textBoxName);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.labelClose);
             this.Controls.Add(this.buttonCredits);
             this.Controls.Add(this.buttonCreateNewDataBase);
@@ -133,13 +237,15 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(467, 492);
+            this.MaximumSize = new System.Drawing.Size(800, 492);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(467, 492);
             this.Name = "OCDataBaseView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.OCDataBaseView_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MouseDownControl);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -151,5 +257,15 @@
         private System.Windows.Forms.Button buttonCreateNewDataBase;
         private System.Windows.Forms.Button buttonCredits;
         private System.Windows.Forms.Label labelClose;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.TextBox textBoxMasterPass;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label labelError;
+        private System.Windows.Forms.Button buttonCreateNew;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }
