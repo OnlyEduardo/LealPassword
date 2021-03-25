@@ -13,10 +13,10 @@ namespace LealPassword.View
 {
     internal sealed partial class OCDataBaseView : Form
     {
-
         internal OCDataBaseView()
         {
             InitializeComponent();
+            Program.SetDefaultConf(this);
         }
 
         private void OCDataBaseView_Load(object sender, EventArgs e)
@@ -29,6 +29,32 @@ namespace LealPassword.View
         private void LabelOpenLast_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ButtonChooseFileToOpen_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ButtonCreateNewDataBase_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonCredits_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LabelClose_Click(object sender, EventArgs e) => Program.QuitProgram();
+
+        private bool CheckLastPath()
+        {
+            var path = Properties.Settings.Default.LastPath;
+
+            return string.IsNullOrEmpty(path) || 
+                string.IsNullOrWhiteSpace(path) || 
+                !Data.ReadController.ExistLastPath() ;
         }
     }
 }

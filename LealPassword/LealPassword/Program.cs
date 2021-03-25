@@ -1,4 +1,5 @@
-﻿using LealPassword.View;
+﻿using LealPassword.Diagnostics;
+using LealPassword.View;
 using System;
 using System.Windows.Forms;
 
@@ -33,6 +34,13 @@ namespace LealPassword
                 SendMessage(handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
+        
+        internal static void SetDefaultConf(Form form, string title)
+        {
+            form.Icon = Properties.Resources.icon_key;
+            form.Text = title;
+        }
+        internal static void SetDefaultConf(Form form) => SetDefaultConf(form, "LealPassword");
 
         internal static void RestartProgram() => Application.Restart();
         internal static void QuitProgram() => Application.Restart();
@@ -47,9 +55,13 @@ namespace LealPassword
                     FileName = url,
                 };
                 System.Diagnostics.Process.Start(info);
-            } catch
+                LogBag.AddNormalLog($"Site '{url}' aberto no navegador padrão.");
+            } 
+            catch
             {
-                MessageBox.Show($"Não foi possível abrir o site {url}", "Erro desconhecido", MessageBoxButtons.OK);
+                var erromsg = $"Não foi possível abrir o site {url}";
+                MessageBox.Show(erromsg, "Erro desconhecido", MessageBoxButtons.OK);
+                LogBag.AddErrorLog(erromsg);
             }
         }
         internal static void CopyToClipBoard(string text) => Clipboard.SetText(text);
