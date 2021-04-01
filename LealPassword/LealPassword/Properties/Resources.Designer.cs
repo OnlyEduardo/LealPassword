@@ -81,6 +81,36 @@ namespace LealPassword.Properties {
         }
         
         /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo_200x96px {
+            get {
+                object obj = ResourceManager.GetObject("logo_200x96px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap maximize_window_32px {
+            get {
+                object obj = ResourceManager.GetObject("maximize_window_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap minimize_32px {
+            get {
+                object obj = ResourceManager.GetObject("minimize_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a eduardoleal.contact@gmail.com.
         /// </summary>
         internal static string MyEmail {
@@ -113,6 +143,16 @@ namespace LealPassword.Properties {
         internal static string MySite {
             get {
                 return ResourceManager.GetString("MySite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap normalize_window_32px {
+            get {
+                object obj = ResourceManager.GetObject("normalize_window_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

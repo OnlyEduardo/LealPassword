@@ -36,14 +36,13 @@ namespace LealPassword.View
             openFileDialog1.DefaultExt = defaulext;
             openFileDialog1.Filter = $"LealPassword file (*{defaulext})|*{defaulext}";
             var digr = openFileDialog1.ShowDialog();
-            Properties.Settings.Default.LastPath = openFileDialog1.FileName;
-
+            
             switch (digr)
             {
                 case DialogResult.OK:
                 case DialogResult.Yes:
                     {
-                        
+                        Properties.Settings.Default.LastPath = openFileDialog1.FileName;
                         break;
                     }
                 case DialogResult.None:
