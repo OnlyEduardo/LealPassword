@@ -39,8 +39,14 @@
             this.labelClose = new System.Windows.Forms.Label();
             this.labelLogo = new System.Windows.Forms.Label();
             this.panelSide = new System.Windows.Forms.Panel();
+            this.labelSettings = new System.Windows.Forms.Label();
+            this.labelCards = new System.Windows.Forms.Label();
+            this.labelPersonalInfo = new System.Windows.Forms.Label();
+            this.labelNotes = new System.Windows.Forms.Label();
+            this.labelAccounts = new System.Windows.Forms.Label();
             this.panelContainer = new System.Windows.Forms.Panel();
             this.panelTop.SuspendLayout();
+            this.panelSide.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTop
@@ -59,7 +65,7 @@
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Margin = new System.Windows.Forms.Padding(2);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(984, 96);
+            this.panelTop.Size = new System.Drawing.Size(1000, 96);
             this.panelTop.TabIndex = 0;
             this.panelTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MouseDownControl);
             // 
@@ -107,21 +113,23 @@
             // 
             // labelStatus
             // 
+            this.labelStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelStatus.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelStatus.ForeColor = System.Drawing.Color.Red;
-            this.labelStatus.Location = new System.Drawing.Point(831, 48);
+            this.labelStatus.Location = new System.Drawing.Point(847, 48);
             this.labelStatus.Name = "labelStatus";
             this.labelStatus.Size = new System.Drawing.Size(153, 48);
             this.labelStatus.TabIndex = 4;
             this.labelStatus.Text = "Bloqueado";
             this.labelStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelStatus.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MouseDownControl);
             // 
             // labelMinimize
             // 
             this.labelMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelMinimize.Image = global::LealPassword.Properties.Resources.minimize_32px;
-            this.labelMinimize.Location = new System.Drawing.Point(828, 0);
+            this.labelMinimize.Location = new System.Drawing.Point(844, 0);
             this.labelMinimize.Name = "labelMinimize";
             this.labelMinimize.Size = new System.Drawing.Size(48, 48);
             this.labelMinimize.TabIndex = 3;
@@ -132,7 +140,7 @@
             this.labelMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelMaximize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelMaximize.Image = global::LealPassword.Properties.Resources.maximize_window_32px;
-            this.labelMaximize.Location = new System.Drawing.Point(882, 0);
+            this.labelMaximize.Location = new System.Drawing.Point(898, 0);
             this.labelMaximize.Name = "labelMaximize";
             this.labelMaximize.Size = new System.Drawing.Size(48, 48);
             this.labelMaximize.TabIndex = 2;
@@ -143,7 +151,7 @@
             this.labelClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelClose.Image = global::LealPassword.Properties.Resources.close_window_32px;
-            this.labelClose.Location = new System.Drawing.Point(936, 0);
+            this.labelClose.Location = new System.Drawing.Point(952, 0);
             this.labelClose.Name = "labelClose";
             this.labelClose.Size = new System.Drawing.Size(48, 48);
             this.labelClose.TabIndex = 1;
@@ -165,12 +173,81 @@
             // panelSide
             // 
             this.panelSide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(32)))));
+            this.panelSide.Controls.Add(this.labelSettings);
+            this.panelSide.Controls.Add(this.labelCards);
+            this.panelSide.Controls.Add(this.labelPersonalInfo);
+            this.panelSide.Controls.Add(this.labelNotes);
+            this.panelSide.Controls.Add(this.labelAccounts);
             this.panelSide.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSide.Location = new System.Drawing.Point(0, 96);
             this.panelSide.Margin = new System.Windows.Forms.Padding(2);
             this.panelSide.Name = "panelSide";
-            this.panelSide.Size = new System.Drawing.Size(96, 488);
+            this.panelSide.Size = new System.Drawing.Size(96, 504);
             this.panelSide.TabIndex = 1;
+            // 
+            // labelSettings
+            // 
+            this.labelSettings.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelSettings.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.labelSettings.ForeColor = System.Drawing.Color.White;
+            this.labelSettings.Image = global::LealPassword.Properties.Resources.settings_32px;
+            this.labelSettings.Location = new System.Drawing.Point(0, 456);
+            this.labelSettings.Name = "labelSettings";
+            this.labelSettings.Size = new System.Drawing.Size(96, 48);
+            this.labelSettings.TabIndex = 4;
+            this.labelSettings.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // labelCards
+            // 
+            this.labelCards.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelCards.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelCards.ForeColor = System.Drawing.Color.White;
+            this.labelCards.Image = global::LealPassword.Properties.Resources.card_48px;
+            this.labelCards.Location = new System.Drawing.Point(0, 288);
+            this.labelCards.Name = "labelCards";
+            this.labelCards.Size = new System.Drawing.Size(96, 96);
+            this.labelCards.TabIndex = 3;
+            this.labelCards.Text = "Cartões";
+            this.labelCards.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // labelPersonalInfo
+            // 
+            this.labelPersonalInfo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelPersonalInfo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelPersonalInfo.ForeColor = System.Drawing.Color.White;
+            this.labelPersonalInfo.Image = global::LealPassword.Properties.Resources.personalInfo_48px;
+            this.labelPersonalInfo.Location = new System.Drawing.Point(0, 192);
+            this.labelPersonalInfo.Name = "labelPersonalInfo";
+            this.labelPersonalInfo.Size = new System.Drawing.Size(96, 96);
+            this.labelPersonalInfo.TabIndex = 2;
+            this.labelPersonalInfo.Text = "Informações pessoais";
+            this.labelPersonalInfo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // labelNotes
+            // 
+            this.labelNotes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelNotes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelNotes.ForeColor = System.Drawing.Color.White;
+            this.labelNotes.Image = global::LealPassword.Properties.Resources.note_48px;
+            this.labelNotes.Location = new System.Drawing.Point(0, 96);
+            this.labelNotes.Name = "labelNotes";
+            this.labelNotes.Size = new System.Drawing.Size(96, 96);
+            this.labelNotes.TabIndex = 1;
+            this.labelNotes.Text = "Notas secretas";
+            this.labelNotes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // labelAccounts
+            // 
+            this.labelAccounts.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelAccounts.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelAccounts.ForeColor = System.Drawing.Color.White;
+            this.labelAccounts.Image = global::LealPassword.Properties.Resources.accounts_48px;
+            this.labelAccounts.Location = new System.Drawing.Point(0, 0);
+            this.labelAccounts.Name = "labelAccounts";
+            this.labelAccounts.Size = new System.Drawing.Size(96, 96);
+            this.labelAccounts.TabIndex = 0;
+            this.labelAccounts.Text = "Contas";
+            this.labelAccounts.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // panelContainer
             // 
@@ -179,7 +256,7 @@
             this.panelContainer.Location = new System.Drawing.Point(96, 96);
             this.panelContainer.Margin = new System.Windows.Forms.Padding(2);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(888, 488);
+            this.panelContainer.Size = new System.Drawing.Size(904, 504);
             this.panelContainer.TabIndex = 2;
             // 
             // MainForm
@@ -187,12 +264,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(984, 584);
+            this.ClientSize = new System.Drawing.Size(1000, 600);
             this.ControlBox = false;
             this.Controls.Add(this.panelContainer);
             this.Controls.Add(this.panelSide);
             this.Controls.Add(this.panelTop);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -202,6 +279,7 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
+            this.panelSide.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -220,5 +298,10 @@
         private System.Windows.Forms.Button buttonLockUnlock;
         private System.Windows.Forms.TextBox textBoxMasterPass;
         private System.Windows.Forms.Label labelDatabaseName;
+        private System.Windows.Forms.Label labelAccounts;
+        private System.Windows.Forms.Label labelCards;
+        private System.Windows.Forms.Label labelPersonalInfo;
+        private System.Windows.Forms.Label labelNotes;
+        private System.Windows.Forms.Label labelSettings;
     }
 }

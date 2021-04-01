@@ -63,6 +63,26 @@ namespace LealPassword.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap accounts_48px {
+            get {
+                object obj = ResourceManager.GetObject("accounts_48px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap card_48px {
+            get {
+                object obj = ResourceManager.GetObject("card_48px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap close_window_32px {
             get {
                 object obj = ResourceManager.GetObject("close_window_32px", resourceCulture);
@@ -152,6 +172,36 @@ namespace LealPassword.Properties {
         internal static System.Drawing.Bitmap normalize_window_32px {
             get {
                 object obj = ResourceManager.GetObject("normalize_window_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap note_48px {
+            get {
+                object obj = ResourceManager.GetObject("note_48px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap personalInfo_48px {
+            get {
+                object obj = ResourceManager.GetObject("personalInfo_48px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap settings_32px {
+            get {
+                object obj = ResourceManager.GetObject("settings_32px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
