@@ -10,20 +10,11 @@ namespace LealPassword.Data
     {
         internal static void WriteDataBase(DataBase database, string pathTosave)
         {
-            if (!Directory.Exists(pathTosave))
-            {
-                var msg = $"Não foi possível encontrar caminho '{pathTosave}'";
-                LogBag.AddErrorLog(msg);
-                throw new Exception(msg);
-            }
-
             LogBag.AddNormalLog($"Writing dataBase {database.Name} in {pathTosave}");
+            Properties.Settings.Default.LastPath = pathTosave;
 
             var bf = new BinaryFormatter();
-            var path = Path.Combine(pathTosave, $"{database.Name}{Configuration.extension}");
-            Properties.Settings.Default.LastPath = path;
-
-            using (var file = File.Create(path))
+            using (var file = File.Create(pathTosave))
             {
                 bf.Serialize(file, Security.EncryptDataBase(database));
             }

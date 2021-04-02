@@ -21,10 +21,8 @@ namespace LealPassword.View
             }
         }
 
-        private void OCDataBaseView_Load(object sender, EventArgs e)
-        {
-            LogBag.AddNormalLog("OCDataBaseView loaded with success!");
-        }
+        private void OCDataBaseView_Load(object sender, EventArgs e) =>
+             LogBag.AddNormalLog("OCDataBaseView loaded with success!");
 
         private void MouseDownControl(object sender, MouseEventArgs e) => Program.DragAndDrop(e, Handle);
 
@@ -169,6 +167,12 @@ namespace LealPassword.View
             }
 
             progressBar1.Value = strength;
+        }
+
+        private void TextBoxMasterPass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                ButtonCreateNew_Click(sender, e);
         }
     }
 }

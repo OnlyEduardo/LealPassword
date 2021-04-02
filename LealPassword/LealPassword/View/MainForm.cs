@@ -1,5 +1,6 @@
 ﻿using LealPassword.DataBases;
 using LealPassword.Diagnostics;
+using LealPassword.View.Account;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -8,34 +9,43 @@ namespace LealPassword.View
 {
     internal sealed partial class MainForm : Form
     {
-        private bool locked;
+        private readonly Label[] sideLabels;
+        private bool locked = true;
+        private Form currentForm = null;
 
         internal MainForm(DataBase dataBase)
         {
             InitializeComponent();
+            Program.SetDefaultConf(this, $"LealPassword | {dataBase.Name}");
+
+            sideLabels = new Label[5]
+            {
+                labelAccounts,
+                labelNotes,
+                labelPersonalInfo,
+                labelCards,
+                labelSettings,
+            };
+
+            LabelAccounts_Click(null, new EventArgs());
             DataBase = dataBase;
-            locked = true;
-            Program.SetDefaultConf(this, $"LealPassword | {DataBase.Name}");
             labelDatabaseName.Text = DataBase.Name;
         }
 
         private DataBase DataBase { get; set; }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            LogBag.AddNormalLog("MainForm loaded with success!");
-        }
+        private void MainForm_Load(object sender, EventArgs e) => LogBag.AddNormalLog("MainForm loaded with success!");
 
         private void UnlockOrLockDataBase()
         {
             var inputHashed = Hash.HashString(textBoxMasterPass.Text);
 
-            if (!DataBase.Hash.Equals(inputHashed) && locked) // invalid
+            if (!DataBase.Hash.Hashed.Equals(inputHashed) && locked) // invalid
             {
                 MessageBox.Show("Senha mestra incorreta", "Senha incorreta", MessageBoxButtons.OK);
                 return;
             }
-            
+
             if (locked) // unlocking
             {
                 textBoxMasterPass.Text = "";
@@ -71,17 +81,90 @@ namespace LealPassword.View
             else
             {
                 WindowState = FormWindowState.Maximized;
-                labelMaximize.Image = Properties.Resources.normalize_window_32px;              
+                labelMaximize.Image = Properties.Resources.normalize_window_32px;
             }
         }
 
         private void LabelClose_Click(object sender, EventArgs e) => Program.QuitProgram();
 
+        private void TextBoxMasterPass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                UnlockOrLockDataBase();
+        }
+    
         private void ButtonLockUnlock_Click(object sender, EventArgs e) => UnlockOrLockDataBase();
 
-        private void CheckBox1_CheckedChanged(object sender, EventArgs e) => textBoxMasterPass.PasswordChar 
+        private void CheckBox1_CheckedChanged(object sender, EventArgs e) => textBoxMasterPass.PasswordChar
             = textBoxMasterPass.PasswordChar == '*'
             ? textBoxMasterPass.PasswordChar = '\0'
             : textBoxMasterPass.PasswordChar = '*';
-    }
+
+        #region Sidepanel buttons
+        private void LabelAccounts_Click(object sender, EventArgs e)
+        {
+            CleanCurrentForm();
+            Select(labelAccounts);
+            currentForm = new AccountManagerView();
+            ShowCurrentForm();
+        }
+
+        private void LabelNotes_Click(object sender, EventArgs e)
+        {
+            CleanCurrentForm();
+            Select(labelNotes);
+
+            // TODO: current form = new NoteManagerView();
+        }
+
+        private void LabelPersonalInfo_Click(object sender, EventArgs e)
+        {
+            CleanCurrentForm();
+            Select(labelPersonalInfo);
+
+            // TODO: current form = new PersonalManagerView();
+        }
+
+        private void LabelCards_Click(object sender, EventArgs e)
+        {
+            CleanCurrentForm();
+            Select(labelCards);
+
+            // TODO: current form = new CardManagerView();
+        }
+
+        private void LabelSettings_Click(object sender, EventArgs e)
+        {
+            CleanCurrentForm();
+            Select(labelSettings);
+
+            // TODO: current form = new SettingsView();
+        }
+
+        private void CleanCurrentForm()
+        {
+            if (currentForm != null)
+            {
+                panelContainer.Controls.Clear();
+                currentForm.Dispose();
+                currentForm.Close();
+                currentForm = null;
+            }
+        }
+
+        private void Select(Label label)
+        {
+            foreach (var lbl in sideLabels)
+                lbl.BackColor = Color.FromArgb(0, 0, 32);
+
+            label.BackColor = Color.FromArgb(0, 16, 64);
+        }
+
+        private void ShowCurrentForm()
+        {
+            panelContainer.Controls.Add(currentForm);
+            currentForm.Show();
+        }
+        #endregion
+    } 
 }

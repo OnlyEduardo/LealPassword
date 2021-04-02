@@ -154,6 +154,7 @@
             this.textBoxMasterPass.Size = new System.Drawing.Size(218, 30);
             this.textBoxMasterPass.TabIndex = 8;
             this.textBoxMasterPass.TextChanged += new System.EventHandler(this.TextBoxMasterPass_Tiping);
+            this.textBoxMasterPass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxMasterPass_KeyDown);
             // 
             // checkBox1
             // 

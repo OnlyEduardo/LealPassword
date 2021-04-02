@@ -1,6 +1,7 @@
 ﻿using LealPassword.Diagnostics;
 using LealPassword.View;
 using System;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace LealPassword
@@ -10,9 +11,9 @@ namespace LealPassword
         internal const int WM_NCLBUTTONDOWN = 0xA1;
         internal const int HT_CAPTION = 0x2;
 
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        [DllImport("user32.dll")]
         internal static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        [DllImport("user32.dll")]
         internal static extern bool ReleaseCapture();
 
         /// <summary>
@@ -63,6 +64,13 @@ namespace LealPassword
             MessageBox.Show(credits, "Créditos", MessageBoxButtons.OK);
         }
 
+        internal static void SetDefaultSubFormConf(Form form)
+        {
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+            form.ShowInTaskbar = false; 
+            form.TopLevel = false;
+        }
         internal static void SetDefaultConf(Form form, string title)
         {
             form.Icon = Properties.Resources.icon_key;
@@ -95,12 +103,10 @@ namespace LealPassword
         }
         internal static void CopyToClipBoard(string text) => Clipboard.SetText(text);
 
-        #region OpenDataBases
         internal static void OpenDataBase(OCDataBaseView oCDataBaseView, string pathToDatabase)
         {
             var dataBase = Data.ReadController.ReadDataBase(pathToDatabase);
             SwitchForms(oCDataBaseView, new MainForm(dataBase));
         }
-        #endregion
     }
 }
