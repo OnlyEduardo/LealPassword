@@ -1,4 +1,5 @@
-﻿using LealPassword.DataBases;
+﻿using LealPassword.Data;
+using LealPassword.DataBases;
 using LealPassword.Diagnostics;
 using LealPassword.Extensions;
 using System;
@@ -8,6 +9,8 @@ namespace LealPassword.View.Account
 {
     internal sealed partial class AccountManagerView : Form
     {
+        private AccountView accountView;
+
         internal AccountManagerView()
         {
             InitializeComponent();
@@ -63,6 +66,12 @@ namespace LealPassword.View.Account
         private void ViewRegister(Register register)
         {
             LogBag.AddNormalLog($"View register '{register.Name}' from database '{DataBase.Name}'");
+
+            if (accountView != null)
+                accountView.Dispose();
+
+            accountView = new AccountView(register);
+            accountView.Show();
         }
 
         private void DeleteRegister(Register register)
@@ -73,13 +82,16 @@ namespace LealPassword.View.Account
                 return;
 
             LogBag.AddWarningLog($"Deleting register '{register.Name}' from database '{DataBase.Name}'");
+            DataBase.Registers.Remove(register);
+            WriteController.WriteDataBase(DataBase, Properties.Settings.Default.LastPath);
+            UpdateAccounts();
         }
 
-        private void PanelReg_ClickedEvent(Label sender, Register register)
+        private void PanelReg_ClickedEvent(bool value, Register register)
         {
-            if (sender.Image == Properties.Resources.view_32px)
+            if (value)
                 ViewRegister(register);
-            else if (sender.Image == Properties.Resources.garbage_32px)
+            else
                 DeleteRegister(register);
         }
 
