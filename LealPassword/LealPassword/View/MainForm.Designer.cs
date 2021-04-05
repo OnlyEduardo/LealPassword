@@ -177,6 +177,7 @@
             this.labelLogo.Size = new System.Drawing.Size(267, 118);
             this.labelLogo.TabIndex = 0;
             this.labelLogo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelLogo.Click += new System.EventHandler(this.LabelLogo_Click);
             this.labelLogo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MouseDownControl);
             // 
             // panelSide
@@ -188,6 +189,7 @@
             this.panelSide.Controls.Add(this.labelNotes);
             this.panelSide.Controls.Add(this.labelAccounts);
             this.panelSide.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelSide.Enabled = false;
             this.panelSide.Location = new System.Drawing.Point(0, 118);
             this.panelSide.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelSide.Name = "panelSide";
@@ -251,6 +253,7 @@
             this.labelNotes.TabIndex = 1;
             this.labelNotes.Text = "Notas secretas";
             this.labelNotes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.labelNotes.Visible = false;
             this.labelNotes.Click += new System.EventHandler(this.LabelNotes_Click);
             // 
             // labelAccounts
@@ -270,8 +273,11 @@
             // 
             // panelContainer
             // 
+            this.panelContainer.BackgroundImage = global::LealPassword.Properties.Resources.backlogo;
+            this.panelContainer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.panelContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContainer.Enabled = false;
             this.panelContainer.Location = new System.Drawing.Point(128, 118);
             this.panelContainer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelContainer.Name = "panelContainer";
@@ -283,7 +289,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = global::LealPassword.Properties.Resources.backlogo;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1333, 738);
             this.ControlBox = false;

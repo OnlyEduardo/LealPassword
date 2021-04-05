@@ -43,17 +43,17 @@
             // textBoxUser
             // 
             this.textBoxUser.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxUser.Location = new System.Drawing.Point(100, 32);
+            this.textBoxUser.Location = new System.Drawing.Point(96, 32);
             this.textBoxUser.Name = "textBoxUser";
             this.textBoxUser.ReadOnly = true;
-            this.textBoxUser.Size = new System.Drawing.Size(293, 27);
+            this.textBoxUser.Size = new System.Drawing.Size(283, 27);
             this.textBoxUser.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(31, 32);
+            this.label2.Location = new System.Drawing.Point(17, 32);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 19);
             this.label2.TabIndex = 2;
@@ -62,17 +62,17 @@
             // textBoxMail
             // 
             this.textBoxMail.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxMail.Location = new System.Drawing.Point(100, 75);
+            this.textBoxMail.Location = new System.Drawing.Point(96, 75);
             this.textBoxMail.Name = "textBoxMail";
             this.textBoxMail.ReadOnly = true;
-            this.textBoxMail.Size = new System.Drawing.Size(293, 27);
+            this.textBoxMail.Size = new System.Drawing.Size(283, 27);
             this.textBoxMail.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(31, 75);
+            this.label3.Location = new System.Drawing.Point(17, 75);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 19);
             this.label3.TabIndex = 4;
@@ -81,18 +81,18 @@
             // textBoxPassword
             // 
             this.textBoxPassword.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPassword.Location = new System.Drawing.Point(100, 114);
+            this.textBoxPassword.Location = new System.Drawing.Point(96, 114);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.ReadOnly = true;
-            this.textBoxPassword.Size = new System.Drawing.Size(293, 27);
+            this.textBoxPassword.Size = new System.Drawing.Size(283, 27);
             this.textBoxPassword.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(31, 117);
+            this.label4.Location = new System.Drawing.Point(17, 117);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 19);
             this.label4.TabIndex = 6;
@@ -113,9 +113,9 @@
             // button2
             // 
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(399, 32);
+            this.button2.Location = new System.Drawing.Point(385, 32);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(62, 26);
+            this.button2.Size = new System.Drawing.Size(76, 26);
             this.button2.TabIndex = 16;
             this.button2.Text = "Copiar";
             this.button2.UseVisualStyleBackColor = true;
@@ -124,9 +124,9 @@
             // button3
             // 
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(399, 75);
+            this.button3.Location = new System.Drawing.Point(385, 75);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(62, 26);
+            this.button3.Size = new System.Drawing.Size(76, 26);
             this.button3.TabIndex = 17;
             this.button3.Text = "Copiar";
             this.button3.UseVisualStyleBackColor = true;
@@ -135,9 +135,9 @@
             // button4
             // 
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(399, 114);
+            this.button4.Location = new System.Drawing.Point(385, 114);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(62, 26);
+            this.button4.Size = new System.Drawing.Size(76, 26);
             this.button4.TabIndex = 18;
             this.button4.Text = "Copiar";
             this.button4.UseVisualStyleBackColor = true;
@@ -153,12 +153,12 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.buttonOk);
-            this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBoxMail);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBoxUser);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBoxUser);
+            this.Controls.Add(this.textBoxMail);
+            this.Controls.Add(this.textBoxPassword);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(503, 305);

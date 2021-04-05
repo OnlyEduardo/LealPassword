@@ -1,6 +1,7 @@
 ﻿using LealPassword.DataBases;
 using LealPassword.Diagnostics;
 using LealPassword.View.Account;
+using LealPassword.View.Note;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -27,17 +28,18 @@ namespace LealPassword.View
                 labelSettings,
             };
 
-            LabelAccounts_Click(null, new EventArgs());
+            SelectNullForm();
             DataBase = dataBase;
             labelDatabaseName.Text = DataBase.Name;
-
-            panelContainer.Visible = false;
         }
 
         private DataBase DataBase { get; set; }
 
         private void MainForm_Load(object sender, EventArgs e) => LogBag.AddNormalLog("MainForm loaded with success!");
 
+        private void MouseDownControl(object sender, MouseEventArgs e) => Program.DragAndDrop(e, Handle);
+
+        #region Top buttons
         private void UnlockOrLockDataBase()
         {
             var inputHashed = Hash.HashString(textBoxMasterPass.Text);
@@ -54,7 +56,8 @@ namespace LealPassword.View
                 buttonLockUnlock.Text = "Bloquear";
                 labelStatus.Text = "Desbloqueado";
                 labelStatus.ForeColor = Color.Green;
-                panelContainer.Visible = true;
+                panelSide.Enabled = true;
+                panelContainer.Enabled = true;
                 locked = false;
             }
             else // locking
@@ -62,12 +65,14 @@ namespace LealPassword.View
                 buttonLockUnlock.Text = "Desbloquear";
                 labelStatus.Text = "Bloqueado";
                 labelStatus.ForeColor = Color.Red;
-                panelContainer.Visible = false;
+                panelSide.Enabled = false;
+                panelContainer.Enabled = false;
+                SelectNullForm();
                 locked = true;
             }
         }
 
-        private void MouseDownControl(object sender, MouseEventArgs e) => Program.DragAndDrop(e, Handle);
+        private void LabelLogo_Click(object sender, EventArgs e) => SelectNullForm();
 
         private void LabelMinimize_Click(object sender, EventArgs e) => WindowState = FormWindowState.Minimized;
 
@@ -99,8 +104,15 @@ namespace LealPassword.View
             = textBoxMasterPass.PasswordChar == '*'
             ? textBoxMasterPass.PasswordChar = '\0'
             : textBoxMasterPass.PasswordChar = '*';
+        #endregion
 
         #region Sidepanel buttons
+        private void SelectNullForm()
+        {
+            CleanCurrentForm();
+            Select(null);
+        }
+
         private void LabelAccounts_Click(object sender, EventArgs e)
         {
             CleanCurrentForm();
@@ -113,8 +125,8 @@ namespace LealPassword.View
         {
             CleanCurrentForm();
             Select(labelNotes);
-
-            // TODO: current form = new NoteManagerView();
+            currentForm = new NoteManagerView();
+            ShowCurrentForm();
         }
 
         private void LabelPersonalInfo_Click(object sender, EventArgs e)
@@ -157,7 +169,8 @@ namespace LealPassword.View
             foreach (var lbl in sideLabels)
                 lbl.BackColor = Color.FromArgb(0, 0, 32);
 
-            label.BackColor = Color.FromArgb(0, 16, 64);
+            if(label != null)
+                label.BackColor = Color.FromArgb(0, 16, 64);
         }
 
         private void ShowCurrentForm()
@@ -166,5 +179,7 @@ namespace LealPassword.View
             currentForm.Show();
         }
         #endregion
+
+        
     } 
 }

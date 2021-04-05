@@ -13,7 +13,7 @@ namespace LealPassword.View.Account
         private readonly string alphaUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         private readonly string numbers = "0123456789";
         private readonly string special = "!@#$%&*";
-       
+
         internal AccountAddNew(DataBase dataBase)
         {
             InitializeComponent();
@@ -32,6 +32,14 @@ namespace LealPassword.View.Account
             {
                 ButtonNewTag_Click(null, new EventArgs());
                 buttonNewTag.Visible = false;
+            }
+            else
+            {
+                foreach (var reg in DataBase.Registers)
+                {
+                    comboBoxTags.Items.Add(reg.Tag.Name);
+                }
+                comboBoxTags.SelectedIndex = 0;
             }
         }
 

@@ -10,6 +10,7 @@ namespace LealPassword.View.Account
     {
         internal AccountView(Register register)
         {
+            // TODO: Melhorar design
             InitializeComponent();
             Program.SetDefaultConf(this, $"Registro: {register.Name}");
             ShowInTaskbar = true;
