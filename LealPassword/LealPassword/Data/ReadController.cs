@@ -18,7 +18,6 @@ namespace LealPassword.Data
                 LogBag.AddErrorLog(msg);
                 throw new Exception(msg);
             }
-
             LogBag.AddNormalLog($"Reading path: '{pathToDatabase}'");
             Properties.Settings.Default.LastPath = pathToDatabase;
             Properties.Settings.Default.Save();

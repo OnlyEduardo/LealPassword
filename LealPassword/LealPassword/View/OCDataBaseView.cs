@@ -2,6 +2,7 @@
 using LealPassword.DataBases;
 using LealPassword.Diagnostics;
 using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace LealPassword.View
@@ -95,6 +96,7 @@ namespace LealPassword.View
             }
 
             var hash = new Hash(textBoxMasterPass.Text);
+            path = Path.Combine(path, $"{textBoxName.Text}{Configuration.extension}");
             WriteController.WriteDataBase(new DataBase(textBoxName.Text, hash, new PersonalInfo()), path);
             Program.OpenDataBase(this, Properties.Settings.Default.LastPath);
         }

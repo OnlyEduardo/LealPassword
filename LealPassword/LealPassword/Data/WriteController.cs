@@ -14,9 +14,19 @@ namespace LealPassword.Data
             Properties.Settings.Default.LastPath = pathTosave;
 
             var bf = new BinaryFormatter();
-            using (var file = File.Create(pathTosave))
+            try
             {
-                bf.Serialize(file, Security.EncryptDataBase(database));
+                using (var file = File.Create(pathTosave))
+                {
+                    bf.Serialize(file, Security.EncryptDataBase(database));
+                }
+            } 
+            catch (System.UnauthorizedAccessException)
+            {
+                System.Windows.Forms.MessageBox.Show($"Acesso ao caminho {pathTosave} não autorizado",
+                    "Sem permissão", System.Windows.Forms.MessageBoxButtons.OK);
+                Program.QuitProgram();
+                return;
             }
         }
     }

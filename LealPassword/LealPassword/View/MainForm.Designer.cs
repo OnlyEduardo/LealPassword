@@ -147,7 +147,7 @@
             // 
             this.labelMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelMaximize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelMaximize.Image = global::LealPassword.Properties.Resources.maximize_window_32px;
+            this.labelMaximize.Image = global::LealPassword.Properties.Resources.normalize_window_32px;
             this.labelMaximize.Location = new System.Drawing.Point(1197, 0);
             this.labelMaximize.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelMaximize.Name = "labelMaximize";

@@ -81,12 +81,12 @@ namespace LealPassword.View
             if (WindowState.Equals(FormWindowState.Maximized))
             {
                 WindowState = FormWindowState.Normal;
-                labelMaximize.Image = Properties.Resources.maximize_window_32px;
+                labelMaximize.Image = Properties.Resources.normalize_window_32px;
             }
             else
             {
                 WindowState = FormWindowState.Maximized;
-                labelMaximize.Image = Properties.Resources.normalize_window_32px;
+                labelMaximize.Image = Properties.Resources.maximize_window_32px;               
             }
         }
 
