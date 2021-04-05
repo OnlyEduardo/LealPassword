@@ -73,6 +73,16 @@ namespace LealPassword.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap backlogo {
+            get {
+                object obj = ResourceManager.GetObject("backlogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap card_48px {
             get {
                 object obj = ResourceManager.GetObject("card_48px", resourceCulture);
@@ -86,6 +96,16 @@ namespace LealPassword.Properties {
         internal static System.Drawing.Bitmap close_window_32px {
             get {
                 object obj = ResourceManager.GetObject("close_window_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap garbage_32px {
+            get {
+                object obj = ResourceManager.GetObject("garbage_32px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -202,6 +222,16 @@ namespace LealPassword.Properties {
         internal static System.Drawing.Bitmap settings_32px {
             get {
                 object obj = ResourceManager.GetObject("settings_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap view_32px {
+            get {
+                object obj = ResourceManager.GetObject("view_32px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

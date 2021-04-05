@@ -30,6 +30,8 @@ namespace LealPassword.View
             LabelAccounts_Click(null, new EventArgs());
             DataBase = dataBase;
             labelDatabaseName.Text = DataBase.Name;
+
+            panelContainer.Visible = false;
         }
 
         private DataBase DataBase { get; set; }
@@ -52,8 +54,7 @@ namespace LealPassword.View
                 buttonLockUnlock.Text = "Bloquear";
                 labelStatus.Text = "Desbloqueado";
                 labelStatus.ForeColor = Color.Green;
-                panelSide.Enabled = true;
-                panelContainer.Enabled = true;
+                panelContainer.Visible = true;
                 locked = false;
             }
             else // locking
@@ -61,8 +62,7 @@ namespace LealPassword.View
                 buttonLockUnlock.Text = "Desbloquear";
                 labelStatus.Text = "Bloqueado";
                 labelStatus.ForeColor = Color.Red;
-                panelSide.Enabled = false;
-                panelContainer.Enabled = false;
+                panelContainer.Visible = false;
                 locked = true;
             }
         }
