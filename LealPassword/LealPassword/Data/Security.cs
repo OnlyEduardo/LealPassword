@@ -86,7 +86,6 @@ namespace LealPassword.Data
             // PersonalInfo
             decryptedDataBase.PersonalInfo.Name = decryptedDataBase.PersonalInfo.Name.Encrypt();
             decryptedDataBase.PersonalInfo.Email = decryptedDataBase.PersonalInfo.Email.Encrypt();
-            decryptedDataBase.PersonalInfo.Cellphone = decryptedDataBase.PersonalInfo.Cellphone.Encrypt();
             decryptedDataBase.PersonalInfo.Rg = decryptedDataBase.PersonalInfo.Rg.Encrypt();
             decryptedDataBase.PersonalInfo.Cpf = decryptedDataBase.PersonalInfo.Cpf.Encrypt();
 
@@ -127,7 +126,6 @@ namespace LealPassword.Data
             // PersonalInfo
             encryptedDataBase.PersonalInfo.Name = encryptedDataBase.PersonalInfo.Name.Decrypt();
             encryptedDataBase.PersonalInfo.Email = encryptedDataBase.PersonalInfo.Email.Decrypt();
-            encryptedDataBase.PersonalInfo.Cellphone = encryptedDataBase.PersonalInfo.Cellphone.Decrypt();
             encryptedDataBase.PersonalInfo.Rg = encryptedDataBase.PersonalInfo.Rg.Decrypt();
             encryptedDataBase.PersonalInfo.Cpf = encryptedDataBase.PersonalInfo.Cpf.Decrypt();
 

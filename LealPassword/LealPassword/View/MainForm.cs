@@ -2,6 +2,7 @@
 using LealPassword.Diagnostics;
 using LealPassword.View.Account;
 using LealPassword.View.Note;
+using LealPassword.View.PersonalI;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -125,6 +126,7 @@ namespace LealPassword.View
         {
             CleanCurrentForm();
             Select(labelNotes);
+            // TODO: definir função do NoteView
             currentForm = new NoteManagerView();
             ShowCurrentForm();
         }
@@ -133,24 +135,23 @@ namespace LealPassword.View
         {
             CleanCurrentForm();
             Select(labelPersonalInfo);
-
-            // TODO: current form = new PersonalManagerView();
+            currentForm = new PersonalIManagerView();
+            ((PersonalIManagerView)currentForm).PersonalInfoUpdated += MainForm_PersonalInfoUpdated;
+            ShowCurrentForm();
         }
-
+  
         private void LabelCards_Click(object sender, EventArgs e)
         {
             CleanCurrentForm();
             Select(labelCards);
-
-            // TODO: current form = new CardManagerView();
+            // TODO: currentForm = new CardManagerView();
         }
 
         private void LabelSettings_Click(object sender, EventArgs e)
         {
             CleanCurrentForm();
             Select(labelSettings);
-
-            // TODO: current form = new SettingsView();
+            // TODO: currentForm = new SettingsView();
         }
 
         private void CleanCurrentForm()
@@ -180,6 +181,15 @@ namespace LealPassword.View
         }
         #endregion
 
-        
-    } 
+        private void MainForm_PersonalInfoUpdated(string name, string mail, string rg, string cpf)
+        {
+            DataBase.PersonalInfo.Name = name;
+            DataBase.PersonalInfo.Email = mail;
+            DataBase.PersonalInfo.Rg = rg;
+            DataBase.PersonalInfo.Cpf = cpf;
+
+            Data.WriteController.WriteDataBase(DataBase, Properties.Settings.Default.LastPath);
+            DataBase = Data.ReadController.ReadDataBase(Properties.Settings.Default.LastPath);
+        }
+    }
 }
