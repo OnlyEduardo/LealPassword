@@ -33,7 +33,7 @@ namespace LealPassword.View
             labelDatabaseName.Text = DataBase.Name;
         }
 
-        private DataBase DataBase { get; set; }
+        private DataBase DataBase { get; }
 
         private void MainForm_Load(object sender, EventArgs e) => LogBag.AddNormalLog("MainForm loaded with success!");
 
@@ -117,7 +117,7 @@ namespace LealPassword.View
         {
             CleanCurrentForm();
             Select(labelAccounts);
-            currentForm = new AccountManagerView();
+            currentForm = new AccountManagerView(DataBase);
             ShowCurrentForm();
         }
 
@@ -134,7 +134,7 @@ namespace LealPassword.View
         {
             CleanCurrentForm();
             Select(labelPersonalInfo);
-            currentForm = new PersonalIManagerView();
+            currentForm = new PersonalIManagerView(DataBase);
             ((PersonalIManagerView)currentForm).PersonalInfoUpdated += MainForm_PersonalInfoUpdated;
             ShowCurrentForm();
         }
@@ -191,9 +191,12 @@ namespace LealPassword.View
             DataBase.PersonalInfo.Rg = rg;
             DataBase.PersonalInfo.Cpf = cpf;
             DataBase.PersonalInfo.ImagePath = imagepath;
+        }
 
-            Data.WriteController.WriteDataBase(DataBase, Properties.Settings.Default.LastPath);
-            DataBase = Data.ReadController.ReadDataBase(Properties.Settings.Default.LastPath);
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Deseja salvar as alterações ?", DataBase.Name, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                Data.WriteController.WriteDataBase(DataBase, Properties.Settings.Default.LastPath);
         }
     }
 }

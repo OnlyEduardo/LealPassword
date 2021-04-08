@@ -1,7 +1,6 @@
 ﻿using LealPassword.DataBases;
 using LealPassword.Diagnostics;
 using System;
-using System.Text;
 using System.Windows.Forms;
 
 namespace LealPassword.View.Account
@@ -34,5 +33,8 @@ namespace LealPassword.View.Account
         private void Button4_Click(object sender, EventArgs e) => Program.CopyToClipBoard(textBoxPassword.Text);
 
         private void ButtonOk_Click(object sender, EventArgs e) => Dispose();
+
+        private void CheckBox1_CheckedChanged(object sender, EventArgs e) =>
+            textBoxPassword.PasswordChar = textBoxPassword.PasswordChar == '*' ? '\0' : '*';
     }
 }

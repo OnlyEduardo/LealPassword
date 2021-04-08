@@ -39,18 +39,21 @@
             this.panelRegisterList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelRegisterList.AutoScroll = true;
             this.panelRegisterList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelRegisterList.Location = new System.Drawing.Point(29, 50);
+            this.panelRegisterList.Location = new System.Drawing.Point(22, 41);
+            this.panelRegisterList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelRegisterList.Name = "panelRegisterList";
-            this.panelRegisterList.Size = new System.Drawing.Size(938, 510);
+            this.panelRegisterList.Size = new System.Drawing.Size(704, 415);
             this.panelRegisterList.TabIndex = 0;
             // 
             // buttonAddNew
             // 
             this.buttonAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAddNew.Location = new System.Drawing.Point(29, 12);
+            this.buttonAddNew.Location = new System.Drawing.Point(22, 10);
+            this.buttonAddNew.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonAddNew.Name = "buttonAddNew";
-            this.buttonAddNew.Size = new System.Drawing.Size(118, 32);
+            this.buttonAddNew.Size = new System.Drawing.Size(88, 26);
             this.buttonAddNew.TabIndex = 1;
             this.buttonAddNew.Text = "Novo";
             this.buttonAddNew.UseVisualStyleBackColor = true;
@@ -61,9 +64,10 @@
             this.textBoxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxSearch.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxSearch.Location = new System.Drawing.Point(512, 14);
+            this.textBoxSearch.Location = new System.Drawing.Point(384, 11);
+            this.textBoxSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxSearch.Name = "textBoxSearch";
-            this.textBoxSearch.Size = new System.Drawing.Size(331, 30);
+            this.textBoxSearch.Size = new System.Drawing.Size(249, 26);
             this.textBoxSearch.TabIndex = 2;
             this.textBoxSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxSearch_KeyDown);
             // 
@@ -71,9 +75,10 @@
             // 
             this.buttonSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearch.Location = new System.Drawing.Point(849, 14);
+            this.buttonSearch.Location = new System.Drawing.Point(637, 11);
+            this.buttonSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(118, 30);
+            this.buttonSearch.Size = new System.Drawing.Size(88, 24);
             this.buttonSearch.TabIndex = 3;
             this.buttonSearch.Text = "Buscar";
             this.buttonSearch.UseVisualStyleBackColor = true;
@@ -81,14 +86,15 @@
             // 
             // AccountManagerView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(979, 572);
+            this.ClientSize = new System.Drawing.Size(734, 465);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.buttonAddNew);
             this.Controls.Add(this.panelRegisterList);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "AccountManagerView";
             this.Text = "AccountManagerView";
             this.ResumeLayout(false);

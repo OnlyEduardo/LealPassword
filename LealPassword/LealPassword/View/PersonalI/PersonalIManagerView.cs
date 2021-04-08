@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LealPassword.DataBases;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -6,30 +7,29 @@ namespace LealPassword.View.PersonalI
 {
     internal sealed partial class PersonalIManagerView : Form
     {
-        internal PersonalIManagerView()
+        internal PersonalIManagerView(DataBase database)
         {
             InitializeComponent();
             Program.SetDefaultSubFormConf(this);
+            Database = database;
         }
 
         internal delegate void PersonalInfoEvent(string name, string mail, string rg, string cpf, string imagepath);
         internal event PersonalInfoEvent PersonalInfoUpdated;
 
+        internal DataBase Database { get; }
+
         private void PersonalIManagerView_Load(object sender, EventArgs e)
         {
-            var db = Data.ReadController.ReadDataBase(Properties.Settings.Default.LastPath);
-
-            var path = db.PersonalInfo.ImagePath;
+            var path = Database.PersonalInfo.ImagePath;
 
             if (System.IO.File.Exists(path))
-            {
                 panel1.BackgroundImage = new Bitmap(path);
-            }
 
-            textBoxName.Text = db.PersonalInfo.Name;
-            textBoxEmail.Text = db.PersonalInfo.Email;
-            textBoxRg.Text = db.PersonalInfo.Rg;
-            textBoxCpf.Text = db.PersonalInfo.Cpf;
+            textBoxName.Text = Database.PersonalInfo.Name;
+            textBoxEmail.Text = Database.PersonalInfo.Email;
+            textBoxRg.Text = Database.PersonalInfo.Rg;
+            textBoxCpf.Text = Database.PersonalInfo.Cpf;
         }
 
         private void LabelEdit_Click(object sender, EventArgs e) => EditMode(true);
@@ -63,8 +63,8 @@ namespace LealPassword.View.PersonalI
                 labelError.Text = "CPF não pode ser vazio";
                 return;
             }
-            var db = Data.ReadController.ReadDataBase(Properties.Settings.Default.LastPath);
-            PersonalInfoUpdated?.Invoke(name, mail, rg, cpf, db.PersonalInfo.ImagePath);
+
+            PersonalInfoUpdated?.Invoke(name, mail, rg, cpf, Database.PersonalInfo.ImagePath);
         }
 
         private bool CheckString(string val) => string.IsNullOrEmpty(val) || string.IsNullOrWhiteSpace(val);
@@ -89,9 +89,7 @@ namespace LealPassword.View.PersonalI
                 var path = openFileDialog1.FileName;
                 panel1.BackgroundImage = new Bitmap(path);
 
-                var db = Data.ReadController.ReadDataBase(Properties.Settings.Default.LastPath);
-                db.PersonalInfo.ImagePath = path;
-                Data.WriteController.WriteDataBase(db, Properties.Settings.Default.LastPath);
+                Database.PersonalInfo.ImagePath = path;
             }
         }
 

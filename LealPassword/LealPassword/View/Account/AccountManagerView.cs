@@ -11,20 +11,20 @@ namespace LealPassword.View.Account
     {
         private AccountView accountView;
 
-        internal AccountManagerView()
+        internal AccountManagerView(DataBase dataBase)
         {
             InitializeComponent();
             Program.SetDefaultSubFormConf(this);
             Order = OrderType.Default;
+            DataBase = dataBase;
             UpdateAccounts();
         }
 
-        internal DataBase DataBase { get; set; }
+        internal DataBase DataBase { get; }
         internal OrderType Order { get; set; }
 
         private void UpdateAccounts()
         {
-            DataBase = Data.ReadController.ReadDataBase(Properties.Settings.Default.LastPath);
             panelRegisterList.Controls.Clear();
 
             for (int i = DataBase.Registers.Count - 1; i >= 0; i--)

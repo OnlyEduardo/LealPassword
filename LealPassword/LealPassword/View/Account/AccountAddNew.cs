@@ -126,7 +126,6 @@ namespace LealPassword.View.Account
             else
                 DataBase.Registers.Add(new Register(regname, username, email, pass, new Tag(textBoxTag.Text)));
 
-            Data.WriteController.WriteDataBase(DataBase, Properties.Settings.Default.LastPath);
             Close();
         }
 
