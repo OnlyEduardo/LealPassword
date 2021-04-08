@@ -217,6 +217,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "PersonalIManagerView";
             this.Text = "PersonalIManagerView";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PersonalIManagerView_FormClosing);
             this.Load += new System.EventHandler(this.PersonalIManagerView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

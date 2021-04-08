@@ -184,12 +184,13 @@ namespace LealPassword.View
         }
         #endregion
 
-        private void MainForm_PersonalInfoUpdated(string name, string mail, string rg, string cpf)
+        private void MainForm_PersonalInfoUpdated(string name, string mail, string rg, string cpf, string imagepath)
         {
             DataBase.PersonalInfo.Name = name;
             DataBase.PersonalInfo.Email = mail;
             DataBase.PersonalInfo.Rg = rg;
             DataBase.PersonalInfo.Cpf = cpf;
+            DataBase.PersonalInfo.ImagePath = imagepath;
 
             Data.WriteController.WriteDataBase(DataBase, Properties.Settings.Default.LastPath);
             DataBase = Data.ReadController.ReadDataBase(Properties.Settings.Default.LastPath);

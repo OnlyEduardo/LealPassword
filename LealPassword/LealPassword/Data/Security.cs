@@ -10,6 +10,8 @@ namespace LealPassword.Data
     {        
         private static string Encrypt(this string val)
         {
+            if (string.IsNullOrEmpty(val) || string.IsNullOrWhiteSpace(val)) return "";
+
             byte[] clearBytes = Encoding.Unicode.GetBytes(val);
             using (Aes encryptor = Aes.Create())
             {
@@ -36,6 +38,8 @@ namespace LealPassword.Data
 
         private static string Decrypt(this string val)
         {
+            if (string.IsNullOrEmpty(val) || string.IsNullOrWhiteSpace(val)) return "";
+
             val = val.Replace(" ", "+");
             byte[] cipherBytes = Convert.FromBase64String(val);
             using (Aes encryptor = Aes.Create())
@@ -88,6 +92,7 @@ namespace LealPassword.Data
             decryptedDataBase.PersonalInfo.Email = decryptedDataBase.PersonalInfo.Email.Encrypt();
             decryptedDataBase.PersonalInfo.Rg = decryptedDataBase.PersonalInfo.Rg.Encrypt();
             decryptedDataBase.PersonalInfo.Cpf = decryptedDataBase.PersonalInfo.Cpf.Encrypt();
+            decryptedDataBase.PersonalInfo.ImagePath = decryptedDataBase.PersonalInfo.ImagePath.Encrypt();
 
             // Cards 
             for (int i = 0; i < decryptedDataBase.Cards.Count; i++)
@@ -128,6 +133,7 @@ namespace LealPassword.Data
             encryptedDataBase.PersonalInfo.Email = encryptedDataBase.PersonalInfo.Email.Decrypt();
             encryptedDataBase.PersonalInfo.Rg = encryptedDataBase.PersonalInfo.Rg.Decrypt();
             encryptedDataBase.PersonalInfo.Cpf = encryptedDataBase.PersonalInfo.Cpf.Decrypt();
+            encryptedDataBase.PersonalInfo.ImagePath = encryptedDataBase.PersonalInfo.ImagePath.Decrypt();
 
             // Cards 
             for (int i = 0; i < encryptedDataBase.Cards.Count; i++)

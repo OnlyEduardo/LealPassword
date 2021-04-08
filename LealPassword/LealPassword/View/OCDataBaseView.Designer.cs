@@ -56,7 +56,7 @@
             this.labelTitle.Location = new System.Drawing.Point(0, 0);
             this.labelTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(600, 89);
+            this.labelTitle.Size = new System.Drawing.Size(350, 89);
             this.labelTitle.TabIndex = 0;
             this.labelTitle.Text = "LealPassword";
             this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -70,7 +70,7 @@
             this.labelOpenLast.Location = new System.Drawing.Point(0, 89);
             this.labelOpenLast.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelOpenLast.Name = "labelOpenLast";
-            this.labelOpenLast.Size = new System.Drawing.Size(600, 50);
+            this.labelOpenLast.Size = new System.Drawing.Size(350, 50);
             this.labelOpenLast.TabIndex = 1;
             this.labelOpenLast.Text = "Abrir último: nome_database";
             this.labelOpenLast.Visible = false;
@@ -122,7 +122,7 @@
             // 
             this.labelClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelClose.Image = global::LealPassword.Properties.Resources.close_window_32px;
-            this.labelClose.Location = new System.Drawing.Point(576, 0);
+            this.labelClose.Location = new System.Drawing.Point(326, 0);
             this.labelClose.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelClose.Name = "labelClose";
             this.labelClose.Size = new System.Drawing.Size(24, 26);
@@ -239,7 +239,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(32)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(600, 400);
+            this.ClientSize = new System.Drawing.Size(350, 400);
             this.ControlBox = false;
             this.Controls.Add(this.buttonAdvanced);
             this.Controls.Add(this.buttonCreateNew);

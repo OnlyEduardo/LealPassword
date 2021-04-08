@@ -12,19 +12,19 @@ namespace LealPassword.View.PersonalI
             Program.SetDefaultSubFormConf(this);
         }
 
-        internal delegate void PersonalInfoEvent(string name, string mail, string rg, string cpf);
+        internal delegate void PersonalInfoEvent(string name, string mail, string rg, string cpf, string imagepath);
         internal event PersonalInfoEvent PersonalInfoUpdated;
 
         private void PersonalIManagerView_Load(object sender, EventArgs e)
         {
-            var path = Properties.Settings.Default.PictureImagePath;
+            var db = Data.ReadController.ReadDataBase(Properties.Settings.Default.LastPath);
+
+            var path = db.PersonalInfo.ImagePath;
 
             if (System.IO.File.Exists(path))
             {
                 panel1.BackgroundImage = new Bitmap(path);
             }
-
-            var db = Data.ReadController.ReadDataBase(Properties.Settings.Default.LastPath);
 
             textBoxName.Text = db.PersonalInfo.Name;
             textBoxEmail.Text = db.PersonalInfo.Email;
@@ -63,8 +63,8 @@ namespace LealPassword.View.PersonalI
                 labelError.Text = "CPF não pode ser vazio";
                 return;
             }
-
-            PersonalInfoUpdated?.Invoke(name, mail, rg, cpf);
+            var db = Data.ReadController.ReadDataBase(Properties.Settings.Default.LastPath);
+            PersonalInfoUpdated?.Invoke(name, mail, rg, cpf, db.PersonalInfo.ImagePath);
         }
 
         private bool CheckString(string val) => string.IsNullOrEmpty(val) || string.IsNullOrWhiteSpace(val);
@@ -88,9 +88,13 @@ namespace LealPassword.View.PersonalI
             {
                 var path = openFileDialog1.FileName;
                 panel1.BackgroundImage = new Bitmap(path);
-                Properties.Settings.Default.PictureImagePath = path;
-                Properties.Settings.Default.Save();
+
+                var db = Data.ReadController.ReadDataBase(Properties.Settings.Default.LastPath);
+                db.PersonalInfo.ImagePath = path;
+                Data.WriteController.WriteDataBase(db, Properties.Settings.Default.LastPath);
             }
         }
+
+        private void PersonalIManagerView_FormClosing(object sender, FormClosingEventArgs e) => panel1.Dispose();
     }
 }
