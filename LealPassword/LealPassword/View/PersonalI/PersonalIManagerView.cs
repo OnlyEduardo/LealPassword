@@ -23,6 +23,13 @@ namespace LealPassword.View.PersonalI
             {
                 panel1.BackgroundImage = new Bitmap(path);
             }
+
+            var db = Data.ReadController.ReadDataBase(Properties.Settings.Default.LastPath);
+
+            textBoxName.Text = db.PersonalInfo.Name;
+            textBoxEmail.Text = db.PersonalInfo.Email;
+            textBoxRg.Text = db.PersonalInfo.Rg;
+            textBoxCpf.Text = db.PersonalInfo.Cpf;
         }
 
         private void LabelEdit_Click(object sender, EventArgs e) => EditMode(true);

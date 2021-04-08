@@ -6,6 +6,9 @@ namespace LealPassword.DataBases
     [Serializable]
     internal sealed class DataBase
     {
+        internal DataBase(string name, Hash hash, List<Register> regs)
+            : this(name, hash, regs, new List<Note>(), new PersonalInfo(), new List<Card>()) { }
+
         internal DataBase(string name, Hash hash, PersonalInfo personalInfo)
             : this(name, hash, new List<Register>(), new List<Note>(), personalInfo, new List<Card>()) { }
 

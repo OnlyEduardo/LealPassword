@@ -201,6 +201,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(714, 393);
+            this.Controls.Add(this.buttonUpPhoto);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -210,7 +211,6 @@
             this.Controls.Add(this.textBoxCpf);
             this.Controls.Add(this.textBoxRg);
             this.Controls.Add(this.textBoxEmail);
-            this.Controls.Add(this.buttonUpPhoto);
             this.Controls.Add(this.labelEdit);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.panel1);

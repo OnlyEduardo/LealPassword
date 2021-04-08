@@ -9,6 +9,8 @@ namespace LealPassword.View
 {
     internal sealed partial class OCDataBaseView : Form
     {
+        private AdvancedOptions advancedOptionsView;
+
         internal OCDataBaseView()
         {
             InitializeComponent();
@@ -175,6 +177,19 @@ namespace LealPassword.View
         {
             if (e.KeyCode == Keys.Enter)
                 ButtonCreateNew_Click(sender, e);
+        }
+
+        private void ButtonAdvanced_Click(object sender, EventArgs e)
+        {
+            if(advancedOptionsView != null)
+            {
+                advancedOptionsView.Dispose();
+                advancedOptionsView.Close();
+                advancedOptionsView = null;
+            }
+
+            advancedOptionsView = new AdvancedOptions();
+            advancedOptionsView.Show();
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using LealPassword.DataBases;
 using LealPassword.Diagnostics;
 using LealPassword.View.Account;
-using LealPassword.View.Note;
 using LealPassword.View.PersonalI;
 using System;
 using System.Drawing;
@@ -126,8 +125,8 @@ namespace LealPassword.View
         {
             CleanCurrentForm();
             Select(labelNotes);
-            // TODO: definir função do NoteView
-            currentForm = new NoteManagerView();
+            // TODO: definir função do NoteView currentForm = new NoteManagerView();
+            currentForm = new CommingSoonView();
             ShowCurrentForm();
         }
 
@@ -145,6 +144,8 @@ namespace LealPassword.View
             CleanCurrentForm();
             Select(labelCards);
             // TODO: currentForm = new CardManagerView();
+            currentForm = new CommingSoonView();
+            ShowCurrentForm();
         }
 
         private void LabelSettings_Click(object sender, EventArgs e)
@@ -152,6 +153,8 @@ namespace LealPassword.View
             CleanCurrentForm();
             Select(labelSettings);
             // TODO: currentForm = new SettingsView();
+            currentForm = new CommingSoonView();
+            ShowCurrentForm();
         }
 
         private void CleanCurrentForm()
