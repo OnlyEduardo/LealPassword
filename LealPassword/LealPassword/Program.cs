@@ -1,6 +1,8 @@
-﻿using LealPassword.Diagnostics;
+﻿using LealPassword.Data;
+using LealPassword.Diagnostics;
 using LealPassword.View;
 using System;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -20,11 +22,24 @@ namespace LealPassword
         /// Ponto de entrada principal para o aplicativo.
         /// </summary>
         [STAThread]
-        internal static void Main()
+        internal static void Main(string[] args)
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new OCDataBaseView());
+
+            var input = args.Length > 0 ? args[0] : "";
+
+            if (input.EndsWith(Configuration.extension) && File.Exists(input))
+            {
+                var dataBase = ReadController.ReadDataBase(input);
+
+                Properties.Settings.Default.LastPath = input;
+                Properties.Settings.Default.Save();
+
+                Application.Run(new MainForm(dataBase));
+            }
+            else
+                Application.Run(new OCDataBaseView());
         }
 
         internal static void SwitchForms(Form origin, Form target)
@@ -105,7 +120,7 @@ namespace LealPassword
 
         internal static void OpenDataBase(OCDataBaseView oCDataBaseView, string pathToDatabase)
         {
-            var dataBase = Data.ReadController.ReadDataBase(pathToDatabase);
+            var dataBase = ReadController.ReadDataBase(pathToDatabase);
             SwitchForms(oCDataBaseView, new MainForm(dataBase));
         }
     }
