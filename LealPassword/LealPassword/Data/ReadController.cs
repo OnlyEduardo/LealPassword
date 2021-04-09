@@ -1,6 +1,8 @@
 ﻿using LealPassword.DataBases;
 using LealPassword.Diagnostics;
+using LealPassword.Exceptions;
 using System;
+using System.Drawing;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
@@ -12,25 +14,39 @@ namespace LealPassword.Data
 
         internal static DataBase ReadDataBase(string pathToDatabase)
         {
-            if (!File.Exists(pathToDatabase))
+            try
             {
-                var msg = $"Não foi possível encontrar caminho '{pathToDatabase}'";
-                LogBag.AddErrorLog(msg);
-                throw new Exception(msg);
-            }
-            LogBag.AddNormalLog($"Reading path: '{pathToDatabase}'");
-            Properties.Settings.Default.LastPath = pathToDatabase;
-            Properties.Settings.Default.Save();
+                if (!File.Exists(pathToDatabase))
+                {
+                    var msg = $"Não foi possível encontrar caminho '{pathToDatabase}'";
+                    throw new ExceptionTreat($"encontrar caminho '{pathToDatabase}'", new Exception($"Not found to read '{pathToDatabase}'"));
+                }
 
-            var bf = new BinaryFormatter();
-            DataBase dataBase;
+                LogBag.AddNormalLog($"Reading path: '{pathToDatabase}'");
+                Properties.Settings.Default.LastPath = pathToDatabase;
+                Properties.Settings.Default.Save();
 
-            using (var file = File.Open(pathToDatabase, FileMode.Open))
+                var bf = new BinaryFormatter();
+                DataBase dataBase;
+
+                using (var file = File.Open(pathToDatabase, FileMode.Open))
+                {
+                    dataBase = (DataBase)bf.Deserialize(file);
+                }
+
+                dataBase = Security.DecryptDataBase(dataBase);
+
+                if (dataBase.BackgroundColor.IsEmpty)
+                    dataBase.BackgroundColor = Color.White;
+                if (dataBase.ForegroundColor.IsEmpty)
+                    dataBase.ForegroundColor = Color.Black;
+
+                return dataBase;
+            } 
+            catch (Exception e)
             {
-                dataBase = (DataBase)bf.Deserialize(file);
+                throw new ExceptionTreat("ler banco de dados", e);
             }
-
-            return Security.DecryptDataBase(dataBase);
         }
     }
 }

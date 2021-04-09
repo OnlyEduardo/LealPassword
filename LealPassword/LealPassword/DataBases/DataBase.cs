@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace LealPassword.DataBases
 {
@@ -20,6 +21,9 @@ namespace LealPassword.DataBases
             Notes = notes;
             PersonalInfo = personalInfo;
             Cards = cards;
+            BackgroundColor = Color.White;
+            ForegroundColor = Color.Black;
+            AutoSave = false;
         }
 
         internal string Name { get; set; }
@@ -28,6 +32,9 @@ namespace LealPassword.DataBases
         internal List<Note> Notes { get; }
         internal PersonalInfo PersonalInfo { get; }
         internal List<Card> Cards { get; }
+        internal Color BackgroundColor { get; set; }
+        internal Color ForegroundColor { get; set; }
+        internal bool AutoSave { get; set; }
 
         public override string ToString() => Name;
     }

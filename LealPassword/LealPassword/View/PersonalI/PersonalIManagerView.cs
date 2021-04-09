@@ -5,31 +5,42 @@ using System.Windows.Forms;
 
 namespace LealPassword.View.PersonalI
 {
-    internal sealed partial class PersonalIManagerView : Form
+    internal sealed partial class PersonalIManagerView : Form, ISubForm
     {
         internal PersonalIManagerView(DataBase database)
         {
             InitializeComponent();
             Program.SetDefaultSubFormConf(this);
-            Database = database;
+            DataBase = database;
+            UpdateColor();
         }
 
         internal delegate void PersonalInfoEvent(string name, string mail, string rg, string cpf, string imagepath);
         internal event PersonalInfoEvent PersonalInfoUpdated;
+     
+        internal DataBase DataBase { get; }
 
-        internal DataBase Database { get; }
+        public void UpdateColor()
+        {
+            BackColor = DataBase.BackgroundColor;
+
+            foreach (Control ctrol in Controls)
+            {
+                ctrol.ForeColor = DataBase.ForegroundColor;
+            }
+        }
 
         private void PersonalIManagerView_Load(object sender, EventArgs e)
         {
-            var path = Database.PersonalInfo.ImagePath;
+            var path = DataBase.PersonalInfo.ImagePath;
 
             if (System.IO.File.Exists(path))
                 panel1.BackgroundImage = new Bitmap(path);
 
-            textBoxName.Text = Database.PersonalInfo.Name;
-            textBoxEmail.Text = Database.PersonalInfo.Email;
-            textBoxRg.Text = Database.PersonalInfo.Rg;
-            textBoxCpf.Text = Database.PersonalInfo.Cpf;
+            textBoxName.Text = DataBase.PersonalInfo.Name;
+            textBoxEmail.Text = DataBase.PersonalInfo.Email;
+            textBoxRg.Text = DataBase.PersonalInfo.Rg;
+            textBoxCpf.Text = DataBase.PersonalInfo.Cpf;
         }
 
         private void LabelEdit_Click(object sender, EventArgs e) => EditMode(true);
@@ -64,7 +75,7 @@ namespace LealPassword.View.PersonalI
                 return;
             }
 
-            PersonalInfoUpdated?.Invoke(name, mail, rg, cpf, Database.PersonalInfo.ImagePath);
+            PersonalInfoUpdated?.Invoke(name, mail, rg, cpf, DataBase.PersonalInfo.ImagePath);
         }
 
         private bool CheckString(string val) => string.IsNullOrEmpty(val) || string.IsNullOrWhiteSpace(val);
@@ -73,10 +84,10 @@ namespace LealPassword.View.PersonalI
         {
             buttonSave.Visible = mode;
             labelEdit.Visible = !mode;
-            textBoxName.ReadOnly = !mode;
-            textBoxEmail.ReadOnly = !mode;
-            textBoxRg.ReadOnly = !mode;
-            textBoxCpf.ReadOnly = !mode;
+            textBoxName.Enabled = !mode;
+            textBoxEmail.Enabled = !mode;
+            textBoxRg.Enabled = !mode;
+            textBoxCpf.Enabled = !mode;
         }
 
         private void ButtonUpPhoto_Click(object sender, EventArgs e)
@@ -89,10 +100,18 @@ namespace LealPassword.View.PersonalI
                 var path = openFileDialog1.FileName;
                 panel1.BackgroundImage = new Bitmap(path);
 
-                Database.PersonalInfo.ImagePath = path;
+                DataBase.PersonalInfo.ImagePath = path;
             }
         }
 
         private void PersonalIManagerView_FormClosing(object sender, FormClosingEventArgs e) => panel1.Dispose();
+
+        private void Button1_Click(object sender, EventArgs e) => Program.CopyToClipBoard(textBoxName.Text);
+
+        private void Button2_Click(object sender, EventArgs e) => Program.CopyToClipBoard(textBoxEmail.Text);
+
+        private void Button3_Click(object sender, EventArgs e) => Program.CopyToClipBoard(textBoxRg.Text);
+
+        private void Button4_Click(object sender, EventArgs e) => Program.CopyToClipBoard(textBoxCpf.Text);
     }
 }

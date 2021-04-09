@@ -6,7 +6,7 @@ namespace LealPassword.Diagnostics
     {
         internal Log(LogType logType, string message)
         {
-            Message = $"[{DateTime.Now.ToShortDateString()} - {DateTime.Now.ToShortTimeString()}] " +
+            Message = $"[{DateTime.Now.ToShortDateString()} - {DateTime.Now.ToLongTimeString()}] " +
                 $"{Enum.GetName(typeof(LogType), logType)}: {message}";
         }
 

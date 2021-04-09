@@ -113,8 +113,8 @@ namespace LealPassword
             catch
             {
                 var erromsg = $"Não foi possível abrir o site {url}";
-                MessageBox.Show(erromsg, "Erro desconhecido", MessageBoxButtons.OK);
-                LogBag.AddErrorLog(erromsg);
+                MessageBox.Show(erromsg, "Erro", MessageBoxButtons.OK);
+                LogBag.AddWarningLog(erromsg);
             }
         }
         internal static void CopyToClipBoard(string text) => Clipboard.SetText(text);

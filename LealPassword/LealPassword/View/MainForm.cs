@@ -2,6 +2,7 @@
 using LealPassword.Diagnostics;
 using LealPassword.View.Account;
 using LealPassword.View.PersonalI;
+using LealPassword.View.Settings;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -36,6 +37,14 @@ namespace LealPassword.View
         private DataBase DataBase { get; }
 
         private void MainForm_Load(object sender, EventArgs e) => LogBag.AddNormalLog("MainForm loaded with success!");
+
+        private void Save()
+        {
+            if (DataBase.AutoSave)
+                Data.WriteController.WriteDataBase(DataBase, Properties.Settings.Default.LastPath);
+            else if (MessageBox.Show("Deseja salvar as alterações ?", DataBase.Name, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                Data.WriteController.WriteDataBase(DataBase, Properties.Settings.Default.LastPath);
+        }
 
         private void MouseDownControl(object sender, MouseEventArgs e) => Program.DragAndDrop(e, Handle);
 
@@ -126,7 +135,7 @@ namespace LealPassword.View
             CleanCurrentForm();
             Select(labelNotes);
             // TODO: definir função do NoteView currentForm = new NoteManagerView();
-            currentForm = new CommingSoonView();
+            currentForm = new CommingSoonView(DataBase);
             ShowCurrentForm();
         }
 
@@ -144,7 +153,7 @@ namespace LealPassword.View
             CleanCurrentForm();
             Select(labelCards);
             // TODO: currentForm = new CardManagerView();
-            currentForm = new CommingSoonView();
+            currentForm = new CommingSoonView(DataBase);
             ShowCurrentForm();
         }
 
@@ -152,8 +161,8 @@ namespace LealPassword.View
         {
             CleanCurrentForm();
             Select(labelSettings);
-            // TODO: currentForm = new SettingsView();
-            currentForm = new CommingSoonView();
+            currentForm = new SettingsManagerView(DataBase);
+            ((SettingsManagerView)currentForm).GotoMenu += MainForm_GotoMenu;
             ShowCurrentForm();
         }
 
@@ -184,6 +193,12 @@ namespace LealPassword.View
         }
         #endregion
 
+        private void MainForm_GotoMenu()
+        {
+            Save();
+            Program.SwitchForms(this, new OCDataBaseView());
+        }
+
         private void MainForm_PersonalInfoUpdated(string name, string mail, string rg, string cpf, string imagepath)
         {
             DataBase.PersonalInfo.Name = name;
@@ -193,10 +208,6 @@ namespace LealPassword.View
             DataBase.PersonalInfo.ImagePath = imagepath;
         }
 
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (MessageBox.Show("Deseja salvar as alterações ?", DataBase.Name, MessageBoxButtons.YesNo) == DialogResult.Yes)
-                Data.WriteController.WriteDataBase(DataBase, Properties.Settings.Default.LastPath);
-        }
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e) => Save(); 
     }
 }

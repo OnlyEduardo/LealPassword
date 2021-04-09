@@ -138,10 +138,10 @@ namespace LealPassword.Data
             // Cards 
             for (int i = 0; i < encryptedDataBase.Cards.Count; i++)
             {
-                encryptedDataBase.Cards[i].CardName = encryptedDataBase.Cards[i].CardName.Encrypt();
-                encryptedDataBase.Cards[i].OnwerName = encryptedDataBase.Cards[i].OnwerName.Encrypt();
-                encryptedDataBase.Cards[i].Number = encryptedDataBase.Cards[i].Number.Encrypt();
-                encryptedDataBase.Cards[i].Cvv = encryptedDataBase.Cards[i].Cvv.Encrypt();
+                encryptedDataBase.Cards[i].CardName = encryptedDataBase.Cards[i].CardName.Decrypt();
+                encryptedDataBase.Cards[i].OnwerName = encryptedDataBase.Cards[i].OnwerName.Decrypt();
+                encryptedDataBase.Cards[i].Number = encryptedDataBase.Cards[i].Number.Decrypt();
+                encryptedDataBase.Cards[i].Cvv = encryptedDataBase.Cards[i].Cvv.Decrypt();
             }
 
             return encryptedDataBase;

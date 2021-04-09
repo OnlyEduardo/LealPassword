@@ -29,16 +29,30 @@ namespace LealPassword.View
         /// </summary>
         private void InitializeComponent()
         {
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Image = global::LealPassword.Properties.Resources.hammer_96px;
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(604, 315);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Em construção";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CommingSoonView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = global::LealPassword.Properties.Resources.commingSoon_image;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(604, 315);
+            this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
             this.Name = "CommingSoonView";
             this.ResumeLayout(false);
@@ -46,5 +60,7 @@ namespace LealPassword.View
         }
 
         #endregion
+
+        private System.Windows.Forms.Label label1;
     }
 }

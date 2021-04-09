@@ -43,11 +43,11 @@
             // 
             // textBoxUser
             // 
+            this.textBoxUser.Enabled = false;
             this.textBoxUser.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxUser.Location = new System.Drawing.Point(72, 26);
-            this.textBoxUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxUser.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxUser.Name = "textBoxUser";
-            this.textBoxUser.ReadOnly = true;
             this.textBoxUser.Size = new System.Drawing.Size(213, 23);
             this.textBoxUser.TabIndex = 3;
             // 
@@ -64,11 +64,11 @@
             // 
             // textBoxMail
             // 
+            this.textBoxMail.Enabled = false;
             this.textBoxMail.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxMail.Location = new System.Drawing.Point(72, 61);
-            this.textBoxMail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxMail.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxMail.Name = "textBoxMail";
-            this.textBoxMail.ReadOnly = true;
             this.textBoxMail.Size = new System.Drawing.Size(213, 23);
             this.textBoxMail.TabIndex = 5;
             // 
@@ -85,12 +85,12 @@
             // 
             // textBoxPassword
             // 
+            this.textBoxPassword.Enabled = false;
             this.textBoxPassword.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxPassword.Location = new System.Drawing.Point(72, 93);
-            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '*';
-            this.textBoxPassword.ReadOnly = true;
             this.textBoxPassword.Size = new System.Drawing.Size(188, 23);
             this.textBoxPassword.TabIndex = 7;
             // 
@@ -110,7 +110,7 @@
             this.buttonOk.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonOk.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonOk.Location = new System.Drawing.Point(119, 143);
-            this.buttonOk.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonOk.Margin = new System.Windows.Forms.Padding(2);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(128, 38);
             this.buttonOk.TabIndex = 14;
@@ -122,7 +122,7 @@
             // 
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Location = new System.Drawing.Point(289, 26);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(57, 21);
             this.button2.TabIndex = 16;
@@ -134,7 +134,7 @@
             // 
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Location = new System.Drawing.Point(289, 61);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(57, 21);
             this.button3.TabIndex = 17;
@@ -146,7 +146,7 @@
             // 
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Location = new System.Drawing.Point(289, 93);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(57, 21);
             this.button4.TabIndex = 18;
@@ -185,7 +185,7 @@
             this.Controls.Add(this.textBoxMail);
             this.Controls.Add(this.textBoxPassword);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(381, 255);
             this.MinimizeBox = false;

@@ -37,7 +37,8 @@ namespace LealPassword.View.Account
             {
                 foreach (var reg in DataBase.Registers)
                 {
-                    comboBoxTags.Items.Add(reg.Tag.Name);
+                    if(!comboBoxTags.Items.Contains(reg.Tag.Name))
+                        comboBoxTags.Items.Add(reg.Tag.Name);
                 }
                 comboBoxTags.SelectedIndex = 0;
             }

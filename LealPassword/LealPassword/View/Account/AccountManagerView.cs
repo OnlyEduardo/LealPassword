@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace LealPassword.View.Account
 {
-    internal sealed partial class AccountManagerView : Form
+    internal sealed partial class AccountManagerView : Form, ISubForm
     {
         private AccountView accountView;
 
@@ -17,11 +17,23 @@ namespace LealPassword.View.Account
             Program.SetDefaultSubFormConf(this);
             Order = OrderType.Default;
             DataBase = dataBase;
+            UpdateColor();
             UpdateAccounts();
         }
 
         internal DataBase DataBase { get; }
         internal OrderType Order { get; set; }
+
+        public void UpdateColor()
+        {
+            BackColor = DataBase.BackgroundColor;
+            textBoxSearch.BackColor = BackColor;
+
+            foreach (Control ctrol in Controls)
+            {
+                ctrol.ForeColor = DataBase.ForegroundColor;
+            }
+        }
 
         private void UpdateAccounts()
         {
