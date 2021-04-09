@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace LealPassword.View
 {
     internal sealed partial class MainForm : Form
-    {
+    {        
         private readonly Label[] sideLabels;
         private bool locked = true;
         private Form currentForm = null;
@@ -28,15 +28,38 @@ namespace LealPassword.View
                 labelCards,
                 labelSettings,
             };
-
             SelectNullForm();
             DataBase = dataBase;
+            CreateNotifyIcon();
             labelDatabaseName.Text = DataBase.Name;
         }
 
         private DataBase DataBase { get; }
+        private NotifyIcon NotifyIcon { get; set; }
 
         private void MainForm_Load(object sender, EventArgs e) => LogBag.AddNormalLog("MainForm loaded with success!");
+
+        private void CreateNotifyIcon()
+        {
+            NotifyIcon = new NotifyIcon
+            {
+                Visible = false,
+                Icon = Icon,
+                BalloonTipIcon = ToolTipIcon.Info,
+                BalloonTipTitle = $"LealPassword v{Properties.Settings.Default.Version}",
+                BalloonTipText = $"LealPassword está está escondido aqui em baixo!",
+
+                ContextMenu = new ContextMenu(new MenuItem[]
+                {
+                    new MenuItem("Abrir", NormalizeWindow),
+                    new MenuItem("Sobre", About_Button),
+                    new MenuItem("Site", Site_Button),
+                    new MenuItem("Sair", ExitApplication),
+                }),
+
+                Text = "LealPassword",
+            };
+        }
 
         private void Save()
         {
@@ -99,7 +122,17 @@ namespace LealPassword.View
             }
         }
 
-        private void LabelClose_Click(object sender, EventArgs e) => Program.QuitProgram();
+        private void LabelClose_Click(object sender, EventArgs e)
+        {
+            if (DataBase.SystemTray)
+            {
+                Hide();
+                NotifyIcon.Visible = true;
+                NotifyIcon.ShowBalloonTip(2000);
+            }
+            else
+                Program.QuitProgram();
+        }
 
         private void TextBoxMasterPass_KeyDown(object sender, KeyEventArgs e)
         {
@@ -190,6 +223,26 @@ namespace LealPassword.View
         {
             panelContainer.Controls.Add(currentForm);
             currentForm.Show();
+        }
+        #endregion
+
+        #region Notify Buttons
+        private void NormalizeWindow(object sender, EventArgs e)
+        {
+            NotifyIcon.Visible = false;
+            WindowState = FormWindowState.Normal;
+            Show();
+        }
+
+        private void About_Button(object sender, EventArgs e) => Program.ShowCredits();
+
+        private void Site_Button(object sender, EventArgs e) => Program.OpenSite(Properties.Resources.MySite);
+
+        private void ExitApplication(object sender, EventArgs e)
+        {
+            NotifyIcon.Visible = false;
+            Save();
+            Program.QuitProgram();
         }
         #endregion
 

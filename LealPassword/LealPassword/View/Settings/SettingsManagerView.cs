@@ -31,6 +31,7 @@ namespace LealPassword.View.Settings
             Program.SetDefaultSubFormConf(this);
             DataBase = dataBase;
             rnd = new Random();
+            checkBoxSysTray.Checked = dataBase.SystemTray;
             checkBoxAskToSave.Checked = dataBase.AutoSave;
             PopThemes();
             UpdateColor();
@@ -59,10 +60,9 @@ namespace LealPassword.View.Settings
             comboBoxThemes.SelectedIndex = 0;
         }
 
-        private void CheckBoxAskToSave_CheckedChanged(object sender, EventArgs e)
-        {
-            DataBase.AutoSave = checkBoxAskToSave.Checked;
-        }
+        private void CheckBoxSysTray_CheckedChanged(object sender, EventArgs e) => DataBase.SystemTray = checkBoxSysTray.Checked;
+
+        private void CheckBoxAskToSave_CheckedChanged(object sender, EventArgs e) => DataBase.AutoSave = checkBoxAskToSave.Checked;
 
         private void ButtonBackColorSelector_Click(object sender, EventArgs e)
         {
@@ -112,5 +112,7 @@ namespace LealPassword.View.Settings
 
             UpdateColor();
         }
+
+        
     }
 }

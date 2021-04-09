@@ -23,6 +23,7 @@ namespace LealPassword.DataBases
             Cards = cards;
             BackgroundColor = Color.White;
             ForegroundColor = Color.Black;
+            SystemTray = false;
             AutoSave = false;
         }
 
@@ -34,6 +35,7 @@ namespace LealPassword.DataBases
         internal List<Card> Cards { get; }
         internal Color BackgroundColor { get; set; }
         internal Color ForegroundColor { get; set; }
+        internal bool SystemTray { get; set; }
         internal bool AutoSave { get; set; }
 
         public override string ToString() => Name;
