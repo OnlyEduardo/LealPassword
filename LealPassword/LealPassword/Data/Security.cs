@@ -7,7 +7,9 @@ using System.Text;
 namespace LealPassword.Data
 {
     internal static class Security
-    {        
+    {
+        private static readonly string defaultKey = Configuration.key;
+
         private static string Encrypt(this string val)
         {
             if (string.IsNullOrEmpty(val) || string.IsNullOrWhiteSpace(val)) return "";
@@ -15,7 +17,7 @@ namespace LealPassword.Data
             byte[] clearBytes = Encoding.Unicode.GetBytes(val);
             using (Aes encryptor = Aes.Create())
             {
-                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(Configuration.key, new byte[]
+                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(defaultKey, new byte[]
                 {
                     0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76
                 });
@@ -44,7 +46,7 @@ namespace LealPassword.Data
             byte[] cipherBytes = Convert.FromBase64String(val);
             using (Aes encryptor = Aes.Create())
             {
-                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(Configuration.key, new byte[]
+                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(defaultKey, new byte[]
                 {
                     0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76
                 });
@@ -64,7 +66,7 @@ namespace LealPassword.Data
             }
             return val;
         }
-
+    
         internal static DataBase EncryptDataBase(DataBase decryptedDataBase)
         {
             decryptedDataBase.Name = decryptedDataBase.Name.Encrypt();
@@ -78,13 +80,6 @@ namespace LealPassword.Data
                 decryptedDataBase.Registers[i].Email = decryptedDataBase.Registers[i].Email.Encrypt();
                 decryptedDataBase.Registers[i].Pass = decryptedDataBase.Registers[i].Pass.Encrypt();
                 decryptedDataBase.Registers[i].Tag.Name = decryptedDataBase.Registers[i].Tag.Name.Encrypt();
-            }
-
-            // Notes
-            for (int i = 0; i < decryptedDataBase.Notes.Count; i++)
-            {
-                decryptedDataBase.Notes[i].Name = decryptedDataBase.Notes[i].Name.Encrypt();
-                decryptedDataBase.Notes[i].Text = decryptedDataBase.Notes[i].Text.Encrypt();
             }
 
             // PersonalInfo
@@ -119,13 +114,6 @@ namespace LealPassword.Data
                 encryptedDataBase.Registers[i].Email = encryptedDataBase.Registers[i].Email.Decrypt();
                 encryptedDataBase.Registers[i].Pass = encryptedDataBase.Registers[i].Pass.Decrypt();
                 encryptedDataBase.Registers[i].Tag.Name = encryptedDataBase.Registers[i].Tag.Name.Decrypt();
-            }
-
-            // Notes
-            for (int i = 0; i < encryptedDataBase.Notes.Count; i++)
-            {
-                encryptedDataBase.Notes[i].Name = encryptedDataBase.Notes[i].Name.Decrypt();
-                encryptedDataBase.Notes[i].Text = encryptedDataBase.Notes[i].Text.Decrypt();
             }
 
             // PersonalInfo

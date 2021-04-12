@@ -1,6 +1,7 @@
 ﻿using LealPassword.DataBases;
 using LealPassword.Diagnostics;
 using LealPassword.View.Account;
+using LealPassword.View.Note;
 using LealPassword.View.PersonalI;
 using LealPassword.View.Settings;
 using System;
@@ -65,8 +66,11 @@ namespace LealPassword.View
         {
             if (DataBase.AutoSave)
                 Data.WriteController.WriteDataBase(DataBase, Properties.Settings.Default.LastPath);
-            else if (MessageBox.Show("Deseja salvar as alterações ?", DataBase.Name, MessageBoxButtons.YesNo) == DialogResult.Yes)
-                Data.WriteController.WriteDataBase(DataBase, Properties.Settings.Default.LastPath);
+            else
+            {
+                if (MessageBox.Show("Deseja salvar as alterações ?", DataBase.Name, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    Data.WriteController.WriteDataBase(DataBase, Properties.Settings.Default.LastPath);
+            }      
         }
 
         private void MouseDownControl(object sender, MouseEventArgs e) => Program.DragAndDrop(e, Handle);
@@ -167,8 +171,7 @@ namespace LealPassword.View
         {
             CleanCurrentForm();
             Select(labelNotes);
-            // TODO: definir função do NoteView currentForm = new NoteManagerView();
-            currentForm = new CommingSoonView(DataBase);
+            currentForm = new NoteManagerView(DataBase);
             ShowCurrentForm();
         }
 
@@ -241,7 +244,6 @@ namespace LealPassword.View
         private void ExitApplication(object sender, EventArgs e)
         {
             NotifyIcon.Visible = false;
-            Save();
             Program.QuitProgram();
         }
         #endregion

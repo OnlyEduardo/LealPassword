@@ -123,9 +123,27 @@ namespace LealPassword.View.Account
             }
 
             if (comboBoxTags.Visible)
-                DataBase.Registers.Add(new Register(regname, username, email, pass, new Tag((string)comboBoxTags.SelectedItem)));
+            {
+                var tag = (string)comboBoxTags.SelectedItem;
+
+                if (string.IsNullOrEmpty(tag) || string.IsNullOrWhiteSpace(tag))
+                {
+                    labelError.Text = "Selecione ao menos uma tag";
+                    return;
+                }
+
+                DataBase.Registers.Add(new Register(regname, username, email, pass, new Tag(tag)));
+            }           
             else
+            {
+                if (string.IsNullOrEmpty(textBoxTag.Text) || string.IsNullOrWhiteSpace(textBoxTag.Text))
+                {
+                    labelError.Text = "Tag inválida";
+                    return;
+                }
+
                 DataBase.Registers.Add(new Register(regname, username, email, pass, new Tag(textBoxTag.Text)));
+            }
 
             Close();
         }

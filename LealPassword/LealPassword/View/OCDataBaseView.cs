@@ -75,6 +75,13 @@ namespace LealPassword.View
                 return;
             }
 
+            if (IsInvalid(textBoxName.Text))
+            {
+                labelError.Visible = true;
+                labelError.Text = "Nome possiu caracteres invalidos";
+                return;
+            }
+
             folderBrowserDialog1.Description = "Selecione a pasta para salvar";
             var digr = folderBrowserDialog1.ShowDialog();
             string path;
@@ -101,6 +108,17 @@ namespace LealPassword.View
             path = Path.Combine(path, $"{textBoxName.Text}{Configuration.extension}");
             WriteController.WriteDataBase(new DataBase(textBoxName.Text, hash, new PersonalInfo()), path);
             Program.OpenDataBase(this, Properties.Settings.Default.LastPath);
+        }
+
+        private bool IsInvalid(string text)
+        {
+            var invalids = "\\/:*?\"<>|";
+
+            foreach (var c in invalids)
+                if (text.Contains(c.ToString()))
+                    return true;
+
+            return false;
         }
 
         private void TextBoxMasterPass_Tiping(object sender, EventArgs e) => UpdateTextStrength(textBoxMasterPass.Text);

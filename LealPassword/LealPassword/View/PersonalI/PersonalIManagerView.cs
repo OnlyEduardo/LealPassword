@@ -84,10 +84,11 @@ namespace LealPassword.View.PersonalI
         {
             buttonSave.Visible = mode;
             labelEdit.Visible = !mode;
-            textBoxName.Enabled = !mode;
-            textBoxEmail.Enabled = !mode;
-            textBoxRg.Enabled = !mode;
-            textBoxCpf.Enabled = !mode;
+
+            textBoxName.Enabled = mode;
+            textBoxEmail.Enabled = mode;
+            textBoxRg.Enabled = mode;
+            textBoxCpf.Enabled = mode;
         }
 
         private void ButtonUpPhoto_Click(object sender, EventArgs e)

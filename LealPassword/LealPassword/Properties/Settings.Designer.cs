@@ -37,7 +37,7 @@ namespace LealPassword.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1.6.0.1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.7.1.0")]
         public string Version {
             get {
                 return ((string)(this["Version"]));
