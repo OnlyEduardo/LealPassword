@@ -8,9 +8,9 @@ using X_Password.Data;
 
 namespace LealPassword.View
 {
-    internal sealed partial class AdvancedOptions : Form
+    internal sealed partial class ConversorView : Form
     {
-        internal AdvancedOptions()
+        internal ConversorView()
         {
             InitializeComponent();
             Program.SetDefaultConf(this, "LealPassword - Conversor");   

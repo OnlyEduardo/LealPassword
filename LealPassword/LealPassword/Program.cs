@@ -1,5 +1,4 @@
 ﻿using LealPassword.Data;
-using LealPassword.DataBases;
 using LealPassword.Diagnostics;
 using LealPassword.View;
 using System;
@@ -37,7 +36,7 @@ namespace LealPassword
                 Properties.Settings.Default.LastPath = input;
                 Properties.Settings.Default.Save();
 
-                Application.Run(new MainForm(dataBase));
+                Application.Run(new MainView(dataBase));
             }
             else
                 Application.Run(new OCDataBaseView());
@@ -122,7 +121,7 @@ namespace LealPassword
         internal static void OpenDataBase(OCDataBaseView oCDataBaseView, string pathToDatabase)
         {
             var dataBase = ReadController.ReadDataBase(pathToDatabase);
-            SwitchForms(oCDataBaseView, new MainForm(dataBase));
+            SwitchForms(oCDataBaseView, new MainView(dataBase));
         }
     }
 }

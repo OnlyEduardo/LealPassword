@@ -5,24 +5,36 @@ using System.Windows.Forms;
 
 namespace LealPassword.View.PersonalI
 {
-    internal sealed partial class PersonalIManagerView : Form, ISubForm
+    internal sealed partial class PersonalIManagerView : Form, ISubView
     {
         internal PersonalIManagerView(DataBase database)
+            : this(database, null) { }
+
+        internal PersonalIManagerView(DataBase database, Image image)
         {
             InitializeComponent();
             Program.SetDefaultSubFormConf(this);
+
+            if (image != null)
+                panel1.BackgroundImage = image;
+
             DataBase = database;
             UpdateColor();
         }
 
-        internal delegate void PersonalInfoEvent(string name, string mail, string rg, string cpf, string imagepath);
-        internal event PersonalInfoEvent PersonalInfoUpdated;
-     
         internal DataBase DataBase { get; }
+
+        internal delegate void UpdateImage(string oldpath, string newpath);
+        internal event UpdateImage ImageUpdated;
 
         public void UpdateColor()
         {
             BackColor = DataBase.BackgroundColor;
+
+            textBoxName.BackColor = BackColor;
+            textBoxEmail.BackColor = BackColor;
+            textBoxRg.BackColor = BackColor;
+            textBoxCpf.BackColor = BackColor;
 
             foreach (Control ctrol in Controls)
             {
@@ -32,11 +44,6 @@ namespace LealPassword.View.PersonalI
 
         private void PersonalIManagerView_Load(object sender, EventArgs e)
         {
-            var path = DataBase.PersonalInfo.ImagePath;
-
-            if (System.IO.File.Exists(path))
-                panel1.BackgroundImage = new Bitmap(path);
-
             textBoxName.Text = DataBase.PersonalInfo.Name;
             textBoxEmail.Text = DataBase.PersonalInfo.Email;
             textBoxRg.Text = DataBase.PersonalInfo.Rg;
@@ -75,7 +82,10 @@ namespace LealPassword.View.PersonalI
                 return;
             }
 
-            PersonalInfoUpdated?.Invoke(name, mail, rg, cpf, DataBase.PersonalInfo.ImagePath);
+            DataBase.PersonalInfo.Name = name;
+            DataBase.PersonalInfo.Email = mail;
+            DataBase.PersonalInfo.Rg = rg;
+            DataBase.PersonalInfo.Cpf = cpf; 
         }
 
         private bool CheckString(string val) => string.IsNullOrEmpty(val) || string.IsNullOrWhiteSpace(val);
@@ -94,13 +104,13 @@ namespace LealPassword.View.PersonalI
         private void ButtonUpPhoto_Click(object sender, EventArgs e)
         {
             openFileDialog1.Title = "Escolher imagem";
-            openFileDialog1.Filter = "Image Files(*.png; *.jpg; *.jpeg; *.gif; *.bmp)|*.png; *.jpg; *.jpeg; *.gif; *.bmp";
+            openFileDialog1.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png; *.gif";
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 var path = openFileDialog1.FileName;
                 panel1.BackgroundImage = new Bitmap(path);
-
+                ImageUpdated?.Invoke(DataBase.PersonalInfo.ImagePath, path);
                 DataBase.PersonalInfo.ImagePath = path;
             }
         }

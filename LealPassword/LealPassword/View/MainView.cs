@@ -1,6 +1,7 @@
 ﻿using LealPassword.DataBases;
 using LealPassword.Diagnostics;
 using LealPassword.View.Account;
+using LealPassword.View.Card;
 using LealPassword.View.Note;
 using LealPassword.View.PersonalI;
 using LealPassword.View.Settings;
@@ -10,13 +11,13 @@ using System.Windows.Forms;
 
 namespace LealPassword.View
 {
-    internal sealed partial class MainForm : Form
+    internal sealed partial class MainView : Form
     {        
         private readonly Label[] sideLabels;
         private bool locked = true;
         private Form currentForm = null;
 
-        internal MainForm(DataBase dataBase)
+        internal MainView(DataBase dataBase)
         {
             InitializeComponent();
             Program.SetDefaultConf(this, $"LealPassword | {dataBase.Name}");
@@ -33,12 +34,21 @@ namespace LealPassword.View
             DataBase = dataBase;
             CreateNotifyIcon();
             labelDatabaseName.Text = DataBase.Name;
+
         }
 
         private DataBase DataBase { get; }
         private NotifyIcon NotifyIcon { get; set; }
+        private Image Image { get; set; }
 
-        private void MainForm_Load(object sender, EventArgs e) => LogBag.AddNormalLog("MainForm loaded with success!");
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            LogBag.AddNormalLog("MainForm loaded with success!");
+            var path = DataBase.PersonalInfo.ImagePath;
+
+            if (System.IO.File.Exists(path))
+                Image = new Bitmap(path);
+        }
 
         private void CreateNotifyIcon()
         {
@@ -179,17 +189,16 @@ namespace LealPassword.View
         {
             CleanCurrentForm();
             Select(labelPersonalInfo);
-            currentForm = new PersonalIManagerView(DataBase);
-            ((PersonalIManagerView)currentForm).PersonalInfoUpdated += MainForm_PersonalInfoUpdated;
+            currentForm = new PersonalIManagerView(DataBase, Image);
+            ((PersonalIManagerView)currentForm).ImageUpdated += MainView_ImageUpdated;
             ShowCurrentForm();
         }
-  
+
         private void LabelCards_Click(object sender, EventArgs e)
         {
             CleanCurrentForm();
             Select(labelCards);
-            // TODO: currentForm = new CardManagerView();
-            currentForm = new CommingSoonView(DataBase);
+            currentForm = new CardManagerView(DataBase);
             ShowCurrentForm();
         }
 
@@ -254,13 +263,12 @@ namespace LealPassword.View
             Program.SwitchForms(this, new OCDataBaseView());
         }
 
-        private void MainForm_PersonalInfoUpdated(string name, string mail, string rg, string cpf, string imagepath)
+        private void MainView_ImageUpdated(string oldPath, string newPath)
         {
-            DataBase.PersonalInfo.Name = name;
-            DataBase.PersonalInfo.Email = mail;
-            DataBase.PersonalInfo.Rg = rg;
-            DataBase.PersonalInfo.Cpf = cpf;
-            DataBase.PersonalInfo.ImagePath = imagepath;
+            if (oldPath == newPath) return;
+
+            if (System.IO.File.Exists(newPath))
+                Image = new Bitmap(newPath);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e) => Save(); 

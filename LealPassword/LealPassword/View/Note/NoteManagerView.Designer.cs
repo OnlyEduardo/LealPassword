@@ -32,13 +32,13 @@
             this.labelInfo = new System.Windows.Forms.Label();
             this.textBoxDecript = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonChooseDecrypt = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.textBoxCript = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonChooseEncrypt = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -89,25 +89,25 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Chave de ativação";
             // 
-            // button1
+            // buttonChooseDecrypt
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Location = new System.Drawing.Point(536, 73);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(44, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = ". . .";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.ButtonSearchToDecript);
+            this.buttonChooseDecrypt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonChooseDecrypt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonChooseDecrypt.Location = new System.Drawing.Point(536, 73);
+            this.buttonChooseDecrypt.Name = "buttonChooseDecrypt";
+            this.buttonChooseDecrypt.Size = new System.Drawing.Size(44, 23);
+            this.buttonChooseDecrypt.TabIndex = 4;
+            this.buttonChooseDecrypt.Text = ". . .";
+            this.buttonChooseDecrypt.UseVisualStyleBackColor = true;
+            this.buttonChooseDecrypt.Click += new System.EventHandler(this.ButtonSearchToDecript);
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.textBoxDecript);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.buttonChooseDecrypt);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(54, 261);
@@ -117,6 +117,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(51, 250);
@@ -141,7 +142,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.textBoxCript);
-            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.buttonChooseEncrypt);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Location = new System.Drawing.Point(54, 92);
@@ -159,17 +160,17 @@
             this.textBoxCript.Size = new System.Drawing.Size(527, 29);
             this.textBoxCript.TabIndex = 2;
             // 
-            // button2
+            // buttonChooseEncrypt
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Location = new System.Drawing.Point(536, 73);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(44, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = ". . .";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.ButtonSearchToEncript);
+            this.buttonChooseEncrypt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonChooseEncrypt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonChooseEncrypt.Location = new System.Drawing.Point(536, 73);
+            this.buttonChooseEncrypt.Name = "buttonChooseEncrypt";
+            this.buttonChooseEncrypt.Size = new System.Drawing.Size(44, 23);
+            this.buttonChooseEncrypt.TabIndex = 4;
+            this.buttonChooseEncrypt.Text = ". . .";
+            this.buttonChooseEncrypt.UseVisualStyleBackColor = true;
+            this.buttonChooseEncrypt.Click += new System.EventHandler(this.ButtonSearchToEncript);
             // 
             // label5
             // 
@@ -200,14 +201,16 @@
             // 
             // labelError
             // 
-            this.labelError.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.labelError.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(54, 234);
+            this.labelError.Location = new System.Drawing.Point(54, 204);
             this.labelError.Name = "labelError";
-            this.labelError.Size = new System.Drawing.Size(627, 16);
+            this.labelError.Size = new System.Drawing.Size(627, 46);
             this.labelError.TabIndex = 9;
-            this.labelError.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelError.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // NoteManagerView
             // 
@@ -238,13 +241,13 @@
         private System.Windows.Forms.Label labelInfo;
         private System.Windows.Forms.TextBox textBoxDecript;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonChooseDecrypt;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox textBoxCript;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonChooseEncrypt;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;

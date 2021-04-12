@@ -97,7 +97,8 @@ namespace LealPassword.Data
             }
             catch (UnauthorizedAccessException e)
             {
-                var msg = $"Acesso ao caminho {path} não autorizado, tente iniciar o programa como administrador.";
+                var msg = $"Acesso ao caminho {path} não autorizado, tente iniciar o programa como administrador.\n" +
+                    $"Se ainda assim não funcionar, o arquivo deve ser modificado para leitura e gravação";
                 MessageBox.Show(msg, "Sem permissão", MessageBoxButtons.OK);
                 LogBag.AddErrorLog(e);
                 Program.QuitProgram();
@@ -131,9 +132,19 @@ namespace LealPassword.Data
                     filedata = (FileData)bf.Deserialize(file);
                 }
 
-                var tk = filedata.Key.Decrypt(key);
+                string tk;
+                
+                try
+                {
+                    tk = filedata.Key.Decrypt(key);
 
-                if (tk != key)
+                    if (tk != key)
+                    {
+                        err = "Chave inválida, não foi possivel decryptar o arquivo";
+                        return false;
+                    }
+                }
+                catch
                 {
                     err = "Chave inválida, não foi possivel decryptar o arquivo";
                     return false;
@@ -148,7 +159,7 @@ namespace LealPassword.Data
             }
             catch (Exception e)
             {
-                throw new ExceptionTreat($"ler arquivo encryptado no caminho '{path}'", e);
+                throw new ExceptionTreat($"ler arquivo encryptado no caminho '{path}', pode ser devido ao antivirus.", e);
             }
         }
 

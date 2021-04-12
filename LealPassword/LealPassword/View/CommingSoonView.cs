@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace LealPassword.View
 {
-    internal sealed partial class CommingSoonView : Form, ISubForm
+    internal sealed partial class CommingSoonView : Form, ISubView
     {
         internal CommingSoonView(DataBase dataBase)
         {

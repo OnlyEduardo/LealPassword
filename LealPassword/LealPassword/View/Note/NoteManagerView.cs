@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace LealPassword.View.Note
 {
-    internal sealed partial class NoteManagerView : Form, ISubForm
+    internal sealed partial class NoteManagerView : Form, ISubView
     {
         internal NoteManagerView(DataBase dataBase)
         {
@@ -20,11 +20,18 @@ namespace LealPassword.View.Note
         public void UpdateColor()
         {
             BackColor = DataBase.BackgroundColor;
+            textBoxCript.BackColor = BackColor;
+            textBoxDecript.BackColor = BackColor;
+            buttonChooseDecrypt.BackColor = BackColor;
+            buttonChooseEncrypt.BackColor = BackColor;
 
             foreach (Control ctrol in Controls)
             {
                 ctrol.ForeColor = DataBase.ForegroundColor;
             }
+
+            textBoxCript.ForeColor = DataBase.ForegroundColor;
+            textBoxDecript.ForeColor = DataBase.ForegroundColor;
         }
 
         private void LabelInfo_Click(object sender, EventArgs e)

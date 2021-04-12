@@ -42,7 +42,7 @@ namespace LealPassword.Data
                     dataBase.ForegroundColor = Color.Black;
 
                 return dataBase;
-            } 
+            }
             catch (Exception e)
             {
                 throw new ExceptionTreat("ler banco de dados", e);

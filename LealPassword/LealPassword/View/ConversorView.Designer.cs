@@ -1,6 +1,6 @@
 ﻿namespace LealPassword.View
 {
-    internal sealed partial class AdvancedOptions
+    internal sealed partial class ConversorView
     {
         /// <summary>
         /// Required designer variable.

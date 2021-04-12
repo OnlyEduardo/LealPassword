@@ -9,7 +9,7 @@ namespace LealPassword.View
 {
     internal sealed partial class OCDataBaseView : Form
     {
-        private AdvancedOptions advancedOptionsView;
+        private ConversorView advancedOptionsView;
 
         internal OCDataBaseView()
         {
@@ -206,7 +206,7 @@ namespace LealPassword.View
                 advancedOptionsView = null;
             }
 
-            advancedOptionsView = new AdvancedOptions();
+            advancedOptionsView = new ConversorView();
             advancedOptionsView.Show();
         }
     }

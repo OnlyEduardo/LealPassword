@@ -7,7 +7,7 @@ using System.Windows.Forms;
 namespace LealPassword.View.Settings
 {
     // TODO: Adicionar gerador de diagnostico
-    internal sealed partial class SettingsManagerView : Form, ISubForm
+    internal sealed partial class SettingsManagerView : Form, ISubView
     {
         private static readonly Dictionary<string, Color[]> Themes = new Dictionary<string, Color[]>
         {
