@@ -35,7 +35,7 @@ namespace LealPassword.Data
             } 
             catch (Exception e)
             {
-                throw new ExceptionTreat("escrever banco de dados", e);
+                throw new ExceptionTreat($"escrever banco de dados no caminho {pathTosave}", e);
             }
         }
 

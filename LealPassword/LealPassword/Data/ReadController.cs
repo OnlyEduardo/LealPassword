@@ -45,7 +45,7 @@ namespace LealPassword.Data
             }
             catch (Exception e)
             {
-                throw new ExceptionTreat("ler banco de dados", e);
+                throw new ExceptionTreat($"ler banco de dados no caminho {pathToDatabase}", e);
             }
         }
     }

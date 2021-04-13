@@ -2,7 +2,9 @@
 using LealPassword.Diagnostics;
 using LealPassword.View;
 using System;
+using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -24,6 +26,13 @@ namespace LealPassword
         [STAThread]
         internal static void Main(string[] args)
         {
+            var fvi = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
+            if (Properties.Settings.Default.Version != fvi.FileVersion)
+            {
+                Properties.Settings.Default.Version = fvi.FileVersion;
+                Properties.Settings.Default.Save();
+            }              
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
@@ -67,18 +76,6 @@ namespace LealPassword
             }
         }
 
-        internal static void ShowCredits()
-        {
-            var version = Properties.Settings.Default.Version;
-            var credits = $"LealPassword - Gerenciador de senhas\n\n" +
-                $"Versão {version}\n" +
-                $"Copyright © 2021\n" +
-                $"By: {Properties.Resources.MyFullName}\n" +
-                $"Site: {Properties.Resources.MySite}.";
-
-            MessageBox.Show(credits, "Créditos", MessageBoxButtons.OK);
-        }
-
         internal static void SetDefaultSubFormConf(Form form)
         {
             form.FormBorderStyle = FormBorderStyle.None;
@@ -117,9 +114,31 @@ namespace LealPassword
             }
         }
         internal static void CopyToClipBoard(string text) => Clipboard.SetText(text);
+        internal static void ShowCredits()
+        {
+            var version = Properties.Settings.Default.Version;
+            var credits = $"LealPassword - Gerenciador de senhas\n\n" +
+                $"Versão {version}\n" +
+                $"Copyright © 2021\n" +
+                $"Feito por: {Properties.Resources.MyFullName}\n" +
+                $"Site: {Properties.Resources.MySite}.";
+
+            MessageBox.Show(credits, "Créditos", MessageBoxButtons.OK);
+        }
 
         internal static void OpenDataBase(OCDataBaseView oCDataBaseView, string pathToDatabase)
         {
+            if (!File.Exists(pathToDatabase))
+            {
+                oCDataBaseView.Visible = false;
+                Properties.Settings.Default.LastPath = "";
+                Properties.Settings.Default.Save();
+                var msg = $"O caminho {pathToDatabase} não foi encontrado";
+                MessageBox.Show(msg);
+                LogBag.AddWarningLog(msg);
+                return;
+            }
+
             var dataBase = ReadController.ReadDataBase(pathToDatabase);
             SwitchForms(oCDataBaseView, new MainView(dataBase));
         }

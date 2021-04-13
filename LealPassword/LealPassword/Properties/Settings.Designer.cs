@@ -35,12 +35,15 @@ namespace LealPassword.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1.8.3.0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string Version {
             get {
                 return ((string)(this["Version"]));
+            }
+            set {
+                this["Version"] = value;
             }
         }
     }

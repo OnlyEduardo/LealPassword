@@ -276,7 +276,6 @@
         #endregion
 
         private System.Windows.Forms.Label labelTitle;
-        private System.Windows.Forms.Label labelOpenLast;
         private System.Windows.Forms.Button buttonChooseFileToOpen;
         private System.Windows.Forms.Button buttonCreateNewDataBase;
         private System.Windows.Forms.Button buttonCredits;
@@ -292,5 +291,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Button buttonAdvanced;
+        internal System.Windows.Forms.Label labelOpenLast;
     }
 }

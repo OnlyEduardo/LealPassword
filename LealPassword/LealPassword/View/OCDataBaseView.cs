@@ -9,7 +9,7 @@ namespace LealPassword.View
 {
     internal sealed partial class OCDataBaseView : Form
     {
-        private ConversorView advancedOptionsView;
+        private ConversorView conversorView;
 
         internal OCDataBaseView()
         {
@@ -199,15 +199,15 @@ namespace LealPassword.View
 
         private void ButtonAdvanced_Click(object sender, EventArgs e)
         {
-            if(advancedOptionsView != null)
+            if(conversorView != null)
             {
-                advancedOptionsView.Dispose();
-                advancedOptionsView.Close();
-                advancedOptionsView = null;
+                conversorView.Dispose();
+                conversorView.Close();
+                conversorView = null;
             }
 
-            advancedOptionsView = new ConversorView();
-            advancedOptionsView.Show();
+            conversorView = new ConversorView();
+            conversorView.Show();
         }
     }
 }

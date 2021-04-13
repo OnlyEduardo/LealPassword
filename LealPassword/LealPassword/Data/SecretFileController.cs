@@ -92,34 +92,30 @@ namespace LealPassword.Data
                     });
                 }
 
-                err = "";
+                err = "sucesso";
                 return true;
             }
             catch (UnauthorizedAccessException e)
             {
-                var msg = $"Acesso ao caminho {path} não autorizado, tente iniciar o programa como administrador.\n" +
-                    $"Se ainda assim não funcionar, o arquivo deve ser modificado para leitura e gravação";
-                MessageBox.Show(msg, "Sem permissão", MessageBoxButtons.OK);
+                err = $"Acesso ao caminho {path} não autorizado, tente iniciar o programa como administrador.\n" +
+                    $"Se ainda assim não funcionar, o arquivo deve ser modificado para leitura e gravação.";
                 LogBag.AddErrorLog(e);
-                Program.QuitProgram();
+                return false;
             }
             catch (Exception e)
             {
                 throw new ExceptionTreat("escrever banco de dados", e);
             }
-
-            err = "";
-            return false;
         }
 
         internal static bool TryDecryptFile(string path, string key, out string err)
         {
             try
             {
-                if (!File.Exists(path))
+                if (!File.Exists(path) || !path.EndsWith(".txt"))
                 {
-                    var msg = $"Não foi possível encontrar caminho '{path}'";
-                    throw new ExceptionTreat($"encontrar caminho '{path}'", new Exception($"Not found to read '{path}'"));
+                    err = "Caminho inválido ou arquivo não é um arquivo de texto";
+                    return false;
                 }
 
                 LogBag.AddNormalLog($"Reading path: '{path}'");
@@ -154,7 +150,7 @@ namespace LealPassword.Data
                 var ttext = filedata.Text.Decrypt(key);
 
                 File.WriteAllText(path, ttext);
-                err = "";
+                err = "sucesso";
                 return true;
             }
             catch (Exception e)

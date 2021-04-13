@@ -57,19 +57,18 @@ namespace LealPassword.View.Note
 
             if (string.IsNullOrEmpty(key) || string.IsNullOrWhiteSpace(key))
             {
-                labelError.Text = "Senha inválida";
+                MessageBox.Show("Senha inválida", "Senha inválida", MessageBoxButtons.OK);
                 return;
             }
 
             if (SecretFileController.TryEncryptFile(path, key, out string err))
             {
-                labelError.Text = "";
                 textBoxCript.Text = "";
-                MessageBox.Show("Sucesso ao encryptar o arquivo!", "Sucesso", MessageBoxButtons.OK);
+                MessageBox.Show("Sucesso ao criptografar o arquivo!", "Sucesso", MessageBoxButtons.OK);
             }             
             else
             {
-                labelError.Text = err;
+                MessageBox.Show(err, "Erro", MessageBoxButtons.OK);
             }
         }
 
@@ -90,19 +89,18 @@ namespace LealPassword.View.Note
 
             if (string.IsNullOrEmpty(key) || string.IsNullOrWhiteSpace(key))
             {
-                labelError.Text = "Senha inválida";
+                MessageBox.Show("Senha inválida", "Senha inválida", MessageBoxButtons.OK);
                 return;
             }
 
             if (SecretFileController.TryDecryptFile(path, key, out string err))
             {
-                labelError.Text = "";
                 textBoxDecript.Text = "";
                 MessageBox.Show("Sucesso ao descriptografar o arquivo!", "Sucesso", MessageBoxButtons.OK);
             }
             else
             {
-                labelError.Text = err;
+                MessageBox.Show(err, "Erro", MessageBoxButtons.OK);
             }
         }
     }
