@@ -24,12 +24,12 @@ namespace LealPassword.Extensions
             Dock = DockStyle.Top;
             Height = 40;
 
-            var final = card.Number.Substring(card.Number.Length - 5, 4);
+            var final = card.Number.Substring(card.Number.Length - 4, 4);
 
             var lbl = new Label()
             {
                 AutoSize = false,
-                Text = $"Cartão {card.CardName} - final {final}",
+                Text = $"{card.CardName} - final {final}",
                 Dock = DockStyle.Left,
                 TextAlign = ContentAlignment.MiddleLeft,
                 Font = new Font("Verdana", 12, FontStyle.Regular),

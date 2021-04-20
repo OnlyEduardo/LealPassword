@@ -32,6 +32,7 @@ namespace LealPassword.View.Card
         private void UpdateCardsList()
         {
             panelCardsList.Controls.Clear();
+            DataBase.Cards.Sort((x, y) => x.CardName.CompareTo(y.CardName));
 
             for (int i = DataBase.Cards.Count - 1; i >= 0; i--)
             {

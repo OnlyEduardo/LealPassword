@@ -42,16 +42,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelRegisterList.AutoScroll = true;
             this.panelRegisterList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelRegisterList.Location = new System.Drawing.Point(22, 41);
+            this.panelRegisterList.Location = new System.Drawing.Point(11, 39);
             this.panelRegisterList.Margin = new System.Windows.Forms.Padding(2);
             this.panelRegisterList.Name = "panelRegisterList";
-            this.panelRegisterList.Size = new System.Drawing.Size(704, 415);
+            this.panelRegisterList.Size = new System.Drawing.Size(723, 368);
             this.panelRegisterList.TabIndex = 0;
             // 
             // buttonAddNew
             // 
             this.buttonAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAddNew.Location = new System.Drawing.Point(22, 10);
+            this.buttonAddNew.Location = new System.Drawing.Point(11, 8);
             this.buttonAddNew.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAddNew.Name = "buttonAddNew";
             this.buttonAddNew.Size = new System.Drawing.Size(88, 26);
@@ -65,7 +65,7 @@
             this.textBoxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxSearch.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxSearch.Location = new System.Drawing.Point(384, 11);
+            this.textBoxSearch.Location = new System.Drawing.Point(393, 9);
             this.textBoxSearch.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(249, 26);
@@ -76,7 +76,7 @@
             // 
             this.buttonSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearch.Location = new System.Drawing.Point(637, 11);
+            this.buttonSearch.Location = new System.Drawing.Point(646, 11);
             this.buttonSearch.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(88, 24);
@@ -95,7 +95,7 @@
             this.comboBoxOrderBy.Items.AddRange(new object[] {
             "Nome",
             "Tag"});
-            this.comboBoxOrderBy.Location = new System.Drawing.Point(258, 11);
+            this.comboBoxOrderBy.Location = new System.Drawing.Point(269, 11);
             this.comboBoxOrderBy.Name = "comboBoxOrderBy";
             this.comboBoxOrderBy.Size = new System.Drawing.Size(121, 26);
             this.comboBoxOrderBy.TabIndex = 4;
@@ -106,7 +106,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(734, 465);
+            this.ClientSize = new System.Drawing.Size(745, 418);
             this.Controls.Add(this.comboBoxOrderBy);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.textBoxSearch);
