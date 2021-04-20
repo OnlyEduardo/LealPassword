@@ -6,14 +6,18 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace LealPassword
 {
     internal static class Program
     {
+        private const string APP_NAME = "LealPassword";
         internal const int WM_NCLBUTTONDOWN = 0xA1;
         internal const int HT_CAPTION = 0x2;
+
+        private static Mutex mutex = null;
 
         [DllImport("user32.dll")]
         internal static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -26,6 +30,14 @@ namespace LealPassword
         [STAThread]
         internal static void Main(string[] args)
         {
+            mutex = new Mutex(true, APP_NAME, out var createdNew);
+
+            if (!createdNew)
+            {
+                MessageBox.Show("LealPassword já está aberto e em funcionamento, não é possível iniciar outra instância", "Aviso", MessageBoxButtons.OK);
+                return;
+            }
+
             var fvi = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
             if (Properties.Settings.Default.Version != fvi.FileVersion)
             {

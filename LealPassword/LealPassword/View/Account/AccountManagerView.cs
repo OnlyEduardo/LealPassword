@@ -21,11 +21,13 @@ namespace LealPassword.View.Account
         }
 
         internal DataBase DataBase { get; }
+        internal OrderMode OrderMode { get; set; }
 
         public void UpdateColor()
         {
             BackColor = DataBase.BackgroundColor;
             textBoxSearch.BackColor = BackColor;
+            comboBoxOrderBy.BackColor = BackColor;
 
             foreach (Control ctrol in Controls)
             {
@@ -37,6 +39,17 @@ namespace LealPassword.View.Account
         {
             panelRegisterList.Controls.Clear();
 
+            switch (OrderMode)
+            {
+                case OrderMode.Tag:
+                    DataBase.Registers.Sort((x, y) => x.Tag.Name.CompareTo(y.Tag.Name));
+                    break;
+                case OrderMode.Name:
+                default:
+                    DataBase.Registers.Sort((x, y) => x.Name.CompareTo(y.Name));
+                    break;
+            }
+            
             for (int i = DataBase.Registers.Count - 1; i >= 0; i--)
             {
                 var reg = DataBase.Registers[i];
@@ -119,5 +132,11 @@ namespace LealPassword.View.Account
         }
 
         private void ButtonSearch_Click(object sender, EventArgs e) => Search(textBoxSearch.Text);
+
+        private void ComboBoxOrderBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            OrderMode = comboBoxOrderBy.SelectedIndex == 0 ? OrderMode.Name : OrderMode.Tag;
+            UpdateAccounts();
+        }
     }
 }
