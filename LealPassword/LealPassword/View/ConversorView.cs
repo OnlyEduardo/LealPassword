@@ -16,6 +16,31 @@ namespace LealPassword.View
             Program.SetDefaultConf(this, "LealPassword - Conversor");   
         }
 
+        private void ButtonRecover_Click(object sender, EventArgs e)
+        {
+            var path = textBoxPathRecover.Text;
+
+            if (!File.Exists(path))
+            {
+                MessageBox.Show("Caminho inválido, verifique se o caminho para o arquivo está correto", "Caminho inválido", MessageBoxButtons.OK);
+                return;
+            }
+
+            var dialog = MessageBox.Show("Tem certeza que deseja iniciar recuperação ?\n Se fizer isso em um arquivo saudavel, ele ficará irrecuperável mais tarde.",
+                "Aviso", MessageBoxButtons.YesNo);
+
+            if (dialog.Equals(DialogResult.No))
+                return;
+
+            var db = ReadController.ReadDataBase(path);
+            WriteController.WriteDataBase(db, path, false);
+            MessageBox.Show("Tentativa de recuperação finalizada, não houve erros no processo, tente abrir seu arquivo novamente.\nO programa vai reiniciar agora.", "Finalizado", MessageBoxButtons.OK);
+
+            Properties.Settings.Default.LastPath = path;
+            Properties.Settings.Default.Save();
+            Program.RestartProgram();
+        }
+
         private void ButtonConvert_Click(object sender, EventArgs e)
         {
             if (!MasterPasswordController.ExistMasterPassword())

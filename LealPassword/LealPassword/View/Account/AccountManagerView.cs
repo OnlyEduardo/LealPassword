@@ -106,7 +106,6 @@ namespace LealPassword.View.Account
 
             LogBag.AddWarningLog($"Deleting register '{register.Name}' from database '{DataBase.Name}'");
             DataBase.Registers.Remove(register);
-            WriteController.WriteDataBase(DataBase, Properties.Settings.Default.LastPath);
             UpdateAccounts();
         }
 

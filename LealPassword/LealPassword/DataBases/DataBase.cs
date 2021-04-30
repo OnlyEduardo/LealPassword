@@ -5,7 +5,7 @@ using System.Drawing;
 namespace LealPassword.DataBases
 {
     [Serializable]
-    internal sealed class DataBase
+    public sealed class DataBase
     {
         internal DataBase(string name, Hash hash, List<Register> regs)
             : this(name, hash, regs, new PersonalInfo(), new List<Card>()) { }

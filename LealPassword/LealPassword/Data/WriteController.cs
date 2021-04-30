@@ -8,9 +8,9 @@ using System.Text;
 
 namespace LealPassword.Data
 {
-    internal static class WriteController
+    public static class WriteController
     {
-        internal static void WriteDataBase(DataBase database, string pathTosave)
+        public static void WriteDataBase(DataBase database, string pathTosave, bool withEncription = true)
         {
             Properties.Settings.Default.LastPath = pathTosave;
             Properties.Settings.Default.Save();
@@ -23,7 +23,7 @@ namespace LealPassword.Data
 
                 using (var file = File.Create(pathTosave))
                 {
-                    bf.Serialize(file, Security.EncryptDataBase(database));
+                    bf.Serialize(file, withEncription ? Security.EncryptDataBase(database) : database);
                 }      
             }
             catch (UnauthorizedAccessException e)

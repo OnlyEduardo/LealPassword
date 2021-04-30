@@ -8,11 +8,11 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace LealPassword.Data
 {
-    internal static class ReadController
+    public static class ReadController
     {
         internal static bool ExistLastPath() => File.Exists(Properties.Settings.Default.LastPath);
 
-        internal static DataBase ReadDataBase(string pathToDatabase)
+        public static DataBase ReadDataBase(string pathToDatabase)
         {
             try
             {

@@ -24,9 +24,6 @@ namespace LealPassword
         [DllImport("user32.dll")]
         internal static extern bool ReleaseCapture();
 
-        /// <summary>
-        /// Ponto de entrada principal para o aplicativo.
-        /// </summary>
         [STAThread]
         internal static void Main(string[] args)
         {
