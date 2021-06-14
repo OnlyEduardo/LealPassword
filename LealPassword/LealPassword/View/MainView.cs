@@ -70,6 +70,8 @@ namespace LealPassword.View
 
                 Text = "LealPassword",
             };
+
+            NotifyIcon.Click += NormalizeWindow;
         }
 
         private void Save()
