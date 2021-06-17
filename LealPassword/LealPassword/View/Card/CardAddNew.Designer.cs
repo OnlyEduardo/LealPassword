@@ -33,7 +33,6 @@ namespace LealPassword.View.Card
             this.textBoxApplid = new System.Windows.Forms.TextBox();
             this.textBoxNumber = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBoxValid = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxCvv = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -42,6 +41,7 @@ namespace LealPassword.View.Card
             this.labelError = new System.Windows.Forms.Label();
             this.textBoxOnName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
@@ -88,17 +88,6 @@ namespace LealPassword.View.Card
             this.label2.TabIndex = 2;
             this.label2.Text = "Número";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // textBoxValid
-            // 
-            this.textBoxValid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxValid.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxValid.Location = new System.Drawing.Point(186, 159);
-            this.textBoxValid.MaxLength = 5;
-            this.textBoxValid.Name = "textBoxValid";
-            this.textBoxValid.Size = new System.Drawing.Size(97, 26);
-            this.textBoxValid.TabIndex = 5;
             // 
             // label3
             // 
@@ -189,6 +178,19 @@ namespace LealPassword.View.Card
             this.label5.Text = "Dono do cartão";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.CustomFormat = "mm/yy";
+            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(186, 159);
+            this.dateTimePicker1.MinDate = new System.DateTime(2021, 6, 17, 0, 0, 0, 0);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(98, 26);
+            this.dateTimePicker1.TabIndex = 13;
+            this.dateTimePicker1.Value = new System.DateTime(2021, 6, 17, 0, 0, 0, 0);
+            // 
             // CardAddNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -196,6 +198,7 @@ namespace LealPassword.View.Card
             this.BackgroundImage = global::LealPassword.Properties.Resources.add_card_background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(568, 380);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.textBoxOnName);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.labelError);
@@ -203,7 +206,6 @@ namespace LealPassword.View.Card
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.textBoxCvv);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBoxValid);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBoxNumber);
             this.Controls.Add(this.label2);
@@ -227,7 +229,6 @@ namespace LealPassword.View.Card
         private System.Windows.Forms.TextBox textBoxApplid;
         private System.Windows.Forms.TextBox textBoxNumber;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBoxValid;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxCvv;
         private System.Windows.Forms.Label label4;
@@ -236,5 +237,6 @@ namespace LealPassword.View.Card
         private System.Windows.Forms.Label labelError;
         private System.Windows.Forms.TextBox textBoxOnName;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

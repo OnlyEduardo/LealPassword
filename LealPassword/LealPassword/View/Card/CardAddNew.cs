@@ -27,8 +27,8 @@ namespace LealPassword.View.Card
                 textBoxOnName.Text = card.OnwerName;
                 textBoxOnName.ReadOnly = true;
 
-                textBoxValid.Text = $"{card.ValidDate.Month}/{card.ValidDate.Year.ToString().Substring(1, 2)}";
-                textBoxValid.ReadOnly = true;
+                dateTimePicker1.Value = card.ValidDate;
+                dateTimePicker1.Enabled = false;
 
                 textBoxCvv.Text = card.Cvv;
                 textBoxCvv.ReadOnly = true;
@@ -49,7 +49,7 @@ namespace LealPassword.View.Card
             var applid = textBoxApplid.Text;
             var onName = textBoxOnName.Text;
             var number = textBoxNumber.Text;
-            var valid = textBoxValid.Text;
+            var valid = dateTimePicker1.Value;
             var cvv = textBoxCvv.Text;
 
             if (string.IsNullOrEmpty(applid) || string.IsNullOrEmpty(applid))
@@ -72,27 +72,9 @@ namespace LealPassword.View.Card
                 labelError.Text = "Número CVV inválido"; return;
             }
 
-            if (!valid.Contains("/"))
-            {
-                labelError.Text = "Data inválida deve ser feita nesse formato: 05/25 (MM/AA)"; return;
-            }
-
-            var part = valid.Split('/');
-
-            var month = int.Parse(part[0]);
-            var year = int.Parse("20" + part[1]);
-
-            var current = DateTime.Now;
-
-            if (year < current.Year || year == current.Year && month <= current.Month)
-            {
-                labelError.Text = "Data de validade inválida"; return;
-            }
-
             try
             {
-                var datetime = new DateTime(year, month, 1);
-                DataBase.Cards.Add(new DataBases.Card(applid, onName, number, datetime, cvv));
+                DataBase.Cards.Add(new DataBases.Card(applid, onName, number, valid, cvv));
             } catch
             {
                 labelError.Text = "Data de validade inválida"; return;
