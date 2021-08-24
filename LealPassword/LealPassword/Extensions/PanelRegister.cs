@@ -59,7 +59,7 @@ namespace LealPassword.Extensions
             Dock = DockStyle.Left,
             TextAlign = ContentAlignment.MiddleLeft,
             Font = new Font("Verdana", 12, bold ? FontStyle.Bold : FontStyle.Regular),
-            Width = 200,
+            Width = 300,
         };
 
         private Label GenerateLabel(Image image) => new Label()
